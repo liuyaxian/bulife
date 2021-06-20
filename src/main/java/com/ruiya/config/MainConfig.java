@@ -48,4 +48,9 @@ public class MainConfig {
     public String queryPostMain(){
         return "success post";
     }
+
+    @PutMapping("emp")
+    public String modifyEmp(){
+
+    }
 }
