@@ -29,13 +29,13 @@
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>5.5.13.2</version>
+            <artifactId>itext-asian</artifactId>
+            <version>5.2.0</version>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>itext-asian</artifactId>
-            <version>5.2.0</version>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.13.2</version>
         </dependency>
     </dependencies>
 </project>

@@ -4,10 +4,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -98,15 +95,20 @@ public class PdfTemplate {
         textFieldMap.put("31", "2021");
         textFieldMap.put("32", "05");
         textFieldMap.put("33", "27");
+        textFieldMap.put("1", "已确认");
+        textFieldMap.put("year", "2021");
+        textFieldMap.put("month", "06");
+        textFieldMap.put("day", "23");
 //        PdfTemplate.doSomeThing("E:\\项目相关\\openAPI\\滨海项目\\滨海相关合同\\合同\\contract_SCW16511数字.pdf","NewsPDF"+".pdf", textFieldMap);
 
         //设置编码
 //        BaseFont baseFont = BaseFont.createFont("simsun.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         // 不支持中文
-
+        String filename = "E:\\项目相关\\openAPI\\滨海项目\\滨海相关合同\\揭示书\\泓钰鸿运来1号私募证券投资基金风险揭示书签名.pdf";
+        String destFilePath = "E:\\项目相关\\openAPI\\滨海项目\\滨海相关合同\\合同\\contract_SCW165[已签署]6.pdf";
         BaseFont baseFont = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H",BaseFont.NOT_EMBEDDED);
-        PdfReader pdfReader=new PdfReader("E:\\项目相关\\openAPI\\滨海项目\\滨海相关合同\\合同\\contract_SCW16511数字.pdf");
-        PdfStamper pdfStamper=new PdfStamper(pdfReader, new FileOutputStream("newnew.pdf"));
+        PdfReader pdfReader=new PdfReader(filename);
+        PdfStamper pdfStamper=new PdfStamper(pdfReader, new FileOutputStream(destFilePath));
         AcroFields form = pdfStamper.getAcroFields();
         form.addSubstitutionFont(baseFont);
 

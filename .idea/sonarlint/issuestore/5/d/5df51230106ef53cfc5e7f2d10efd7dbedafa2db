@@ -1,0 +1,7 @@
+
+C
+java:S1128"(Remove this unused import 'lombok.Data'.(÷í«ÿÿÿÿÿ
+u
+java:S1149&"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(İ¤š‚
+E
+java:S6212&"/Declare this local variable with "var" instead.(İ¤š‚
