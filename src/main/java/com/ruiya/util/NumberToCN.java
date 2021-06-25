@@ -121,12 +121,31 @@ public class NumberToCN {
         return sb.toString();
     }
 
+
+    public static char []  numberToCharArray(BigDecimal numberOfMoney) {
+        int signum = numberOfMoney.signum();
+        // 零元整的情况
+        if (signum == 0) {
+            return new char[] {'0'};
+        }
+        // 这里会进行金额的四舍五入
+        long number = numberOfMoney.setScale(0, RoundingMode.DOWN).abs().longValue();
+
+        String num  = String.valueOf(number);
+        return  num.toCharArray();
+    }
+
     public static void main(String[] args) {
-        double money = 9999999999999.19;
+        double money = 999999.99;
         BigDecimal numberOfMoney = new BigDecimal(money);
         String s = NumberToCN.number2CNMontrayUnit(numberOfMoney);
         System.out.println("你输入的金额为：【" + money + "】   大写：[" + s.toString()
                 + "]");
+        System.out.println("sss");
+        char []  c = numberToCharArray(numberOfMoney);
+        for (char c1 : c) {
+            System.out.println("c1  :" + c1);
+        }
     }
 }
 

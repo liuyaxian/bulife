@@ -1,0 +1,15 @@
+
+K
+java:S1854"5Remove this useless assignment to local variable "s".(åçù¢
+\
+java:S1854"@Remove this useless assignment to local variable "charSequence".(¤ÎÝg8±É’Ž¤/
+C	java:S108")Either remove or fill this block of code.(š‹œºùÿÿÿÿ
+D
+java:S6212"/Declare this local variable with "var" instead.(¤ÎÝg
+X	java:S125"<This block of commented-out lines of code should be removed.(ÝØ¯¼8³É’Ž¤/
+<
+java:S1481"&Remove this unused "s" local variable.(åçù¢
+M
+java:S1481"1Remove this unused "charSequence" local variable.(¤ÎÝg8³É’Ž¤/
+D
+java:S1481")Remove this unused "flag" local variable.(€Á»›ùÿÿÿÿ

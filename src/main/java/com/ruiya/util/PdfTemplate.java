@@ -4,9 +4,14 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.*;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -120,5 +125,91 @@ public class PdfTemplate {
         }
         pdfStamper.setFormFlattening(true);
         pdfStamper.close();
+    }
+
+
+    /***
+     * 组装pdf文件中的数据
+     * @param custNo
+     * @param fundId
+     * @param contractTypeCode
+     * @param tradeAcco
+     * @param subAmt
+     * @return
+     */
+    public Map<String, String> setTextValueInfo(String custNo, String fundId, String contractTypeCode, String tradeAcco, BigDecimal subAmt) {
+        Map<String, String> fieldMap = new HashMap<>(16);
+        // 只查询个人户信息
+
+        setProductInfo(fundId, contractTemplateTextValueInfo);
+
+        if (CONTRACT_TYPE_HT.equals(contractTypeCode)) {
+            fieldMap.put("name", contractTemplateTextValueInfo.getName());
+            setIdtypeDesc(contractTemplateTextValueInfo.getIdType(), fieldMap);
+            fieldMap.put("idNo", contractTemplateTextValueInfo.getIdNo());
+            fieldMap.put("idNo", contractTemplateTextValueInfo.getIdNo());
+            setSubAmtChar(contractTemplateTextValueInfo.getIdNo(), fieldMap);
+            fieldMap.put("phone", contractTemplateTextValueInfo.getPhone());
+            fieldMap.put("addr", contractTemplateTextValueInfo.getAddr());
+            fieldMap.put("bankAccoName", contractTemplateTextValueInfo.getName());
+            fieldMap.put("bankAcco", contractTemplateTextValueInfo.getBankAcco());
+            fieldMap.put("bankNm", contractTemplateTextValueInfo.getBankNm());
+            // 处理购买金额，
+            fieldMap.put("subAmt", String.valueOf(contractTemplateTextValueInfo.getSubamt()));
+            fieldMap.put("subAmtTenTho", String.valueOf(contractTemplateTextValueInfo.getSubamt().divide(BigDecimal.valueOf(10000), 2,  BigDecimal.ROUND_HALF_UP)));
+            // 人民币（大写）
+            fieldMap.put("subAmtRMBcapital",  MathHelper.number2CNMontrayUnit(subAmt));
+            // 人民币（小写）
+            setSubAmtChar(subAmt,  fieldMap);
+        } else if (CONTRACT_TYPE_FXJSS.equals(contractTypeCode)){
+            fieldMap.put("1", "已确认");
+        } else if (CONTRACT_TYPE_HFWJ.equals(contractTypeCode)) {
+            fieldMap.put("1", "√");
+            fieldMap.put("name", contractTemplateTextValueInfo.getName());
+            fieldMap.put("fundName", contractTemplateTextValueInfo.getFundName());
+            fieldMap.put("custRiskLevel", contractTemplateTextValueInfo.getCustRiskLevel());
+            fieldMap.put("riskLevel", contractTemplateTextValueInfo.getRiskLevel());
+        }
+        fieldMap.put("year", String.valueOf(DateHelper.getCurrentDateYear()));
+        fieldMap.put("month", String.valueOf(DateHelper.getCurrentDateMonth()));
+        fieldMap.put("day", String.valueOf(DateHelper.getCurrentDateDay()));
+        return  fieldMap;
+    }
+
+    /**
+     * 证件类型
+     * @param idType
+     * @param fieldMap
+     */
+    public void setIdtypeDesc(String idType,  Map<String, String> fieldMap) {
+        if ("0".equals(idType)) {
+            fieldMap.put("idType", "身份证");
+            fieldMap.put("idTypeSfz", "√");
+        }
+    }
+
+    /***
+     * 小写数字
+     * @param subAmt
+     * @param fieldMap
+     */
+    public void setSubAmtChar(BigDecimal subAmt,  Map<String, String> fieldMap){
+        char [] subAmtChar  = MathHelper.numberToCharArray(subAmt);
+        for (int i = subAmtChar.length -1;  i < 0; i--) {
+            String  keys = "subAmt" + i;
+            fieldMap.put(keys, String.valueOf(subAmtChar[i]));
+        }
+    }
+    /***
+     * 身份证号码
+     * @param idNo
+     * @param fieldMap
+     */
+    public void setSubAmtChar(String idNo,  Map<String, String> fieldMap){
+        char [] idNoChar  = idNo.toCharArray();
+        for (int i =0;  i < idNoChar.length; i++) {
+            String  keys = "idNo" + i;
+            fieldMap.put(keys, String.valueOf(idNoChar[i]));
+        }
     }
 }

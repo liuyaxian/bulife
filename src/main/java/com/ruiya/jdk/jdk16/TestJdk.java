@@ -22,7 +22,7 @@ public class TestJdk {
         boolean flag;
         if (obj instanceof String s && s.length() > 5) {
             char charSequence= 's';
-            flag = s.contains(charSequence);
+//            flag = s.contains(charSequence);
         }
     }
 
