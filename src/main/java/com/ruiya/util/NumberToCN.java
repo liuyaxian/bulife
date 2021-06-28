@@ -2,6 +2,8 @@ package com.ruiya.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.HashMap;
+import java.util.Map;
 
 /***
  * 数字转换为汉语中人民币的大写
@@ -135,17 +137,46 @@ public class NumberToCN {
         return  num.toCharArray();
     }
 
-    public static void main(String[] args) {
-        double money = 999999.99;
-        BigDecimal numberOfMoney = new BigDecimal(money);
-        String s = NumberToCN.number2CNMontrayUnit(numberOfMoney);
-        System.out.println("你输入的金额为：【" + money + "】   大写：[" + s.toString()
-                + "]");
-        System.out.println("sss");
-        char []  c = numberToCharArray(numberOfMoney);
-        for (char c1 : c) {
-            System.out.println("c1  :" + c1);
+    /***
+     * 小写数字
+     * @param subAmt
+     * @param fieldMap
+     */
+    public static void setSubAmtChar(BigDecimal subAmt, Map<String, String> fieldMap){
+        char [] subAmtChar  = numberToCharArray(subAmt);
+//        for (int i = subAmtChar.length -1;  i >= 0; i--) {
+//            String  keys = "subAmt" + i;
+//            fieldMap.put(keys, String.valueOf(subAmtChar[i]));
+//        }
+
+        for (int i = 0 ; i< subAmtChar.length ; i++) {
+            String  keys = "subAmt" + (subAmtChar.length -i);
+            fieldMap.put(keys, String.valueOf(subAmtChar[i]));
         }
+    }
+
+    public static void main(String[] args) {
+        double money = 1987123456789.99;
+        BigDecimal numberOfMoney = new BigDecimal(money);
+        Map<String, String> fieldMap  = new HashMap<>();
+        setSubAmtChar(numberOfMoney,  fieldMap);
+        fieldMap.forEach((key ,value) -> {
+            System.out.println(key + ":" + value);
+        });
+
+        // 传统的Map迭代方式
+//        for (Map.Entry<String, String> entry : fieldMap.entrySet()) {
+//            System.out.println(entry.getKey() + "：" + entry.getValue());
+//        }
+
+//        String s = NumberToCN.number2CNMontrayUnit(numberOfMoney);
+//        System.out.println("你输入的金额为：【" + money + "】   大写：[" + s.toString()
+//                + "]");
+//        System.out.println("sss");
+//        char []  c = numberToCharArray(numberOfMoney);
+//        for (char c1 : c) {
+//            System.out.println("c1  :" + c1);
+//        }
     }
 }
 
