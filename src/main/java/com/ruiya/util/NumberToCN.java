@@ -130,10 +130,7 @@ public class NumberToCN {
         if (signum == 0) {
             return new char[] {'0'};
         }
-        // 这里会进行金额的四舍五入
-        long number = numberOfMoney.setScale(0, RoundingMode.DOWN).abs().longValue();
-
-        String num  = String.valueOf(number);
+        String num  = String.valueOf(numberOfMoney.setScale(2, RoundingMode.HALF_UP));
         return  num.toCharArray();
     }
 
@@ -156,8 +153,10 @@ public class NumberToCN {
     }
 
     public static void main(String[] args) {
-        double money = 1987123456789.99;
-        BigDecimal numberOfMoney = new BigDecimal(money);
+//        BigDecimal money = BigDecimal.valueOf(100.09);
+//        System.out.println(number2CNMontrayUnit(money));
+
+        BigDecimal numberOfMoney = new BigDecimal(100.00);
         Map<String, String> fieldMap  = new HashMap<>();
         setSubAmtChar(numberOfMoney,  fieldMap);
         fieldMap.forEach((key ,value) -> {
