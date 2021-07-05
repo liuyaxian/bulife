@@ -21,35 +21,3 @@ public interface Functional {
     void method();
 
 }
-
-/***
- *   新增了四个重要的函数式接口：函数形接口 、供给形接口、消费型接口、判断型接口
- */
-
-// 函数形接口   有参数且需要返回值
-@FunctionalInterface
-interface Function<T, R>{
-    R apply(T t);
-}
-
-
-// 供给形接口  无参数，指定返回类型，经常用于只注意过程的代码
-@FunctionalInterface
-interface Supplier<T>{
-    T get();
-}
-
-
-// 消费形接口
-@FunctionalInterface
-interface Consumer<T>{
-    void accept(T t);
-    // 不需要返回值， 有参数，经常用于迭代
-}
-
-// 判断形接口
-@FunctionalInterface
-interface Predicate<T>{
-    boolean test(T t);
-  // 返回true false 经常用于判断
-}

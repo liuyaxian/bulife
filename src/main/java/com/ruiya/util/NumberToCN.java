@@ -2,7 +2,6 @@ package com.ruiya.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.HashMap;
 import java.util.Map;
 
 /***
@@ -153,15 +152,15 @@ public class NumberToCN {
     }
 
     public static void main(String[] args) {
-//        BigDecimal money = BigDecimal.valueOf(100.09);
-//        System.out.println(number2CNMontrayUnit(money));
-
-        BigDecimal numberOfMoney = new BigDecimal(100.00);
-        Map<String, String> fieldMap  = new HashMap<>();
-        setSubAmtChar(numberOfMoney,  fieldMap);
-        fieldMap.forEach((key ,value) -> {
-            System.out.println(key + ":" + value);
-        });
+        BigDecimal money = BigDecimal.valueOf(100.09);
+        System.out.println(number2CNMontrayUnit(money));
+//
+//        BigDecimal numberOfMoney = new BigDecimal(100.00);
+//        Map<String, String> fieldMap  = new HashMap<>();
+//        setSubAmtChar(numberOfMoney,  fieldMap);
+//        fieldMap.forEach((key ,value) -> {
+//            System.out.println(key + ":" + value);
+//        });
 
         // 传统的Map迭代方式
 //        for (Map.Entry<String, String> entry : fieldMap.entrySet()) {
