@@ -3,12 +3,15 @@ package com.ruiya.jdk.jdk8;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 /***
  * Stream 概念
+ * java.util.stream;
  * https://blog.51cto.com/u_15185289/2783509
  */
 //TODO
@@ -18,37 +21,43 @@ public class StreamTest {
         createStream();
     }
 
+
+
+
     /**
      * of 可接收一个泛型对象或可变成泛型集合，构造一个 Stream 对象。
      */
-    public static void createStream(){
-        Stream<String> stringStream = Stream.of("1","2","a","b");
-        stringStream.findFirst();
-        stringStream.findAny();
-        stringStream.count();
-        stringStream.peek(e -> System.out.println(e.toUpperCase())).collect(Collectors.toList());
-        stringStream.forEach(e->System.out.println(e.toUpperCase()));
-        // 是有顺序保证的，
-        stringStream.parallel().forEach(e->System.out.println(e.toUpperCase()));
-        stringStream.limit(2).forEach(e->System.out.println(e));
-        stringStream.skip(2).forEach(e->System.out.println(e));
+    public static void createStream() {
+        Stream<String> stringStream = Stream.of("1", "2", "a", "b");
+        stringStream.filter(str -> str.contains("a"))
+                .forEach(s -> System.out.println("输出： " + s));
 
-        Stream<Integer> integerStrea1 = Stream.of(1,2,5,7,8,12,33);
-        List<Integer> list = integerStrea1.filter(s -> s.intValue()>7).collect(Collectors.toList());
-        List<Integer> list1 = integerStrea1.filter(s -> s.intValue()>7).collect(ArrayList::new, ArrayList::add,
-                ArrayList::addAll);
-
-//        元素去重，例如下面方法返回元素是 a、b、c，将重复的 b 只保留了一个。
-        Stream<String> a = Stream.of("a", "b", "c","b");
-        a.skip(2).forEach(e->System.out.println(e));
-        // sorted 有两个重载，一个无参数，另外一个有个 Comparator类型的参数。
-        // 无参类型的按照自然顺序进行排序，只适合比较单纯的元素，比如数字、字母等。
-        stringStream.sorted().forEach(e->System.out.println(e));
-        // 有参数的需要自定义排序规则，例如下面这个方法，按照第二个字母的大小顺序排序，最后输出的结果是 a1、b3、c6。
-        a.sorted((x,y)->Integer.parseInt(x.substring(1))>Integer.parseInt(y.substring(1))?1:-1).forEach(e->System.out.println(e));
-        List<User> users = getUserData();
-        Stream<User> stream = users.stream();
-        stream.filter(user -> user.getGender()==0 && user.getAge()>50).forEach(e->System.out.println(e));
+//        stringStream.findFirst();
+//        stringStream.findAny();
+//        stringStream.count();
+//        stringStream.peek(e -> System.out.println(e.toUpperCase())).collect(Collectors.toList());
+//        stringStream.forEach(e->System.out.println(e.toUpperCase()));
+//        // 是有顺序保证的，
+//        stringStream.parallel().forEach(e->System.out.println(e.toUpperCase()));
+//        stringStream.limit(2).forEach(e->System.out.println(e));
+//        stringStream.skip(2).forEach(e->System.out.println(e));
+//
+//        Stream<Integer> integerStrea1 = Stream.of(1,2,5,7,8,12,33);
+//        List<Integer> list = integerStrea1.filter(s -> s.intValue()>7).collect(Collectors.toList());
+//        List<Integer> list1 = integerStrea1.filter(s -> s.intValue()>7).collect(ArrayList::new, ArrayList::add,
+//                ArrayList::addAll);
+//
+////        元素去重，例如下面方法返回元素是 a、b、c，将重复的 b 只保留了一个。
+//        Stream<String> a = Stream.of("a", "b", "c","b");
+//        a.skip(2).forEach(e->System.out.println(e));
+//        // sorted 有两个重载，一个无参数，另外一个有个 Comparator类型的参数。
+//        // 无参类型的按照自然顺序进行排序，只适合比较单纯的元素，比如数字、字母等。
+//        stringStream.sorted().forEach(e->System.out.println(e));
+//        // 有参数的需要自定义排序规则，例如下面这个方法，按照第二个字母的大小顺序排序，最后输出的结果是 a1、b3、c6。
+//        a.sorted((x,y)->Integer.parseInt(x.substring(1))>Integer.parseInt(y.substring(1))?1:-1).forEach(e->System.out.println(e));
+//        List<User> users = getUserData();
+//        Stream<User> stream = users.stream();
+//        stream.filter(user -> user.getGender()==0 && user.getAge()>50).forEach(e->System.out.println(e));
         //     BeanUtils.copyProperties(user, dto);
 //        List<UserDto> userDtos = stream.map(user -> dao2Dto(user)).collect(Collectors.toList());
 //        stream.mapToInt();
@@ -60,30 +69,34 @@ public class StreamTest {
 //        Stream<Set<String>>
 //        Stream<List<String>>
 
-// 返回 userId:List<User>
-        Map<String,List<User>> map = user.stream().collect(Collectors.groupingBy(User::getUserId));
 
-// 返回 userId:每组个数
-        Map<String,Long> map = user.stream().collect(Collectors.groupingBy(User::getUserId,Collectors.counting()));
-        User[] userArray = stream.filter(user -> user.getGender().equals(0) && user.getAge() > 50).toArray(User[]::new);
-        Integer sum = integerStream1.reduce(0,(x,y)->x+y);
+        List<User> user = getUserData();
+
+//// 返回 userId:List<User>
+//        Map<String,List<User>> map = user.stream().collect(Collectors.groupingBy(User::getUserId));
+
+//// 返回 userId:每组个数
+//        Map<String,Long> map1 = user.stream().collect(Collectors.groupingBy(User::getUserId,Collectors.counting()));
+//        User[] userArray = stream.filter(user -> user.getGender().equals(0) && user.getAge() > 50).toArray(User[]::new);
+//        Integer sum = integerStream1.reduce(0,(x,y)->x+y);
 
     }
-    private static void flatMap(){
+
+    private static void flatMap() {
         List<User> users = getUserData();
         List<User> users1 = getUserData();
         List<List<User>> userList = new ArrayList<>();
         userList.add(users);
         userList.add(users1);
         Stream<List<User>> stream = userList.stream();
-        List<UserDto> userDtos = stream.flatMap(subUserList->subUserList.stream()).map(user -> dao2Dto(user)).collect(Collectors.toList());
+//        List<UserDto> userDtos = stream.flatMap(subUserList->subUserList.stream()).map(user -> dao2Dto(user)).collect(Collectors.toList());
     }
 
 
     @Data
     @NoArgsConstructor
     static
-    class UserDto{
+    class UserDto {
         private int userId;
         private String userName;
         private String phone;
@@ -91,10 +104,11 @@ public class StreamTest {
         private String address;
         private int age;
     }
+
     @Data
     @NoArgsConstructor
     static
-    class User{
+    class User {
         private int userId;
         private String userName;
         private String phone;
@@ -102,6 +116,7 @@ public class StreamTest {
         private String address;
         private int age;
     }
+
     private static List<User> getUserData() {
         Random random = new Random();
         List<User> users = new ArrayList<>();
@@ -117,34 +132,38 @@ public class StreamTest {
         }
         return users;
     }
+
     /**
      * empty 创建一个空的 Stream 对象。 TODO
      */
-    public static void createNullStream(){
+    public static void createNullStream() {
         Stream<String> stringStream = Stream.of();
     }
+
     /**
      * concat 连接两个 Stream ，不改变其中任何一个 Steam 对象，返回一个新的 Stream 对象。
      */
-    public static  void concatStream(){
-        Stream<String> a = Stream.of("A","B","C");
-        Stream<String> b = Stream.of("d","e","f");
-        Stream<String> c = Stream.concat(a,b);
+    public static void concatStream() {
+        Stream<String> a = Stream.of("A", "B", "C");
+        Stream<String> b = Stream.of("d", "e", "f");
+        Stream<String> c = Stream.concat(a, b);
     }
+
     /**
      * max
      * 一般用于求数字集合中的最大值，或者按实体中数字类型的属性比较，拥有最大值的那个实体。
      * 它接收一个 Comparator<T>，上面也举到这个例子了，它是一个函数式接口类型，
      * 专门用作定义两个对象之间的比较，例如下面这个方法使用了 Integer::compareTo这个方法引用。
      */
-    private static void max(){
+    private static void max() {
         Stream<Integer> integerStream = Stream.of(2, 2, 100, 5);
         Integer max = integerStream.max(Integer::compareTo).get();
         System.out.println(max);
     }
-    private static void max2(){
+
+    private static void max2() {
         Stream<Integer> integerStream = Stream.of(2, 2, 100, 5);
-        Comparator<Integer> comparator =  (x, y) -> (x.intValue() < y.intValue()) ? -1 : ((x.equals(y)) ? 0 : 1);
+        Comparator<Integer> comparator = (x, y) -> (x.intValue() < y.intValue()) ? -1 : ((x.equals(y)) ? 0 : 1);
         Integer max = integerStream.max(comparator).get();
         System.out.println(max);
     }
