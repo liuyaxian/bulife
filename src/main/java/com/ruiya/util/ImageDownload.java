@@ -10,7 +10,23 @@ import java.util.regex.Pattern;
 
 public class ImageDownload {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+//        File dirFile = new File("E:\\刘亚仙\\个人信息\\shopee\\耳环\\20210721-001");
+//        ArrayList<String> list = Dir(dirFile);
+//    for (String str : list){
+//        String filePath = str + "\\1.txt";
+//        String pathFileName = str;
+//        List<String> urls = readFileImage(filePath);
+//
+//        // 将图片地址写入文件中
+//        for (int i = 0; i < urls.size(); i++) {
+//            strRwFile(urls.get(i),  pathFileName + "\\产品详情.txt");
+//            downloadPicture(urls.get(i), pathFileName + "\\" + i + ".jpeg");
+//        }
+//        System.out.println("图片数：" + urls.size());
+//    }
+
+
         String filePath = "E:\\刘亚仙\\个人信息\\shopee\\耳环\\22-网红夸张大气珍珠耳环女S925纯银针气质霸气高级感耳钉2021年新款\\1.txt";
         String path = "E:\\刘亚仙\\个人信息\\shopee\\耳环\\";
         String fileName = "22-网红夸张大气珍珠耳环女S925纯银针气质霸气高级感耳钉2021年新款";
@@ -18,10 +34,12 @@ public class ImageDownload {
 
         // 将图片地址写入文件中
         for (int i = 0; i < urls.size(); i++) {
-            strRwFile(urls.get(i), path + fileName+ "\\产品详情.txt");
-            downloadPicture(urls.get(i), path + fileName + "\\" + i + ".png");
+            strRwFile(urls.get(i), path + fileName + "\\产品详情.txt");
+//            String [] strs = urls.get(i).split(".");
+//            String subFix = strs[strs.length - 1];
+            downloadPicture(urls.get(i), path + fileName + "\\" + i + ".jpeg");
         }
-        System.out.println("图片数："+urls.size());
+        System.out.println("图片数：" + urls.size());
     }
 
 
@@ -36,7 +54,7 @@ public class ImageDownload {
                 // 判断文件是否存在，
                 // 文件流转字节流
                 InputStreamReader reader = new InputStreamReader(
-                        new FileInputStream(file), "UTF-8");
+                        new FileInputStream(file));
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 String lineTxt = "";
                 while ((lineTxt = bufferedReader.readLine()) != null) {
@@ -155,9 +173,9 @@ public class ImageDownload {
             fw = new FileWriter(fileName, true);
 //                System.out.println("文件内容: " + urls);
             fw.append("\n");
-                fw.write(urls);
-                // 刷新缓冲流，
-                fw.flush();
+            fw.write(urls);
+            // 刷新缓冲流，
+            fw.flush();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -174,5 +192,54 @@ public class ImageDownload {
                 }
             }
         }
+    }
+
+    public static ArrayList<String> dirAllStrArr = new ArrayList<String>();
+
+    /**
+     * 遍历文件夹名
+     */
+    public static void DirAll(File dirFile) throws Exception {
+
+        if (dirFile.exists()) {
+            File files[] = dirFile.listFiles();
+            for (File file : files) {
+                // 如果遇到文件夹则递归调用。
+                if (file.isDirectory()) {
+                    // 递归调用
+                    DirAll(file);
+                } else {
+                    // 如果遇到文件夹则放入数组
+                    if (dirFile.getPath().endsWith(File.separator)) {
+                        dirAllStrArr.add(dirFile.getPath() + file.getName());
+                    } else {
+                        dirAllStrArr.add(dirFile.getPath() + File.separator
+                                + file.getName());
+                    }
+                }
+            }
+        }
+    }
+
+    // 这里是仅仅查询当前路径下的所有文件夹、文件并且存放其路径到文件数组
+    // 由于遇到文件夹不查询其包含所有子文件夹、文件，因此没必要用到递归
+    public static ArrayList<String> Dir(File dirFile) throws Exception {
+        ArrayList<String> dirStrArr = new ArrayList<String>();
+
+        if (dirFile.exists()) {
+            // 直接取出利用listFiles()把当前路径下的所有文件夹、文件存放到一个文件数组
+            File files[] = dirFile.listFiles();
+            for (File file : files) {
+                // 如果传递过来的参数dirFile是以文件分隔符，也就是/或者\结尾，则如此构造
+                if (dirFile.getPath().endsWith(File.separator)) {
+                    dirStrArr.add(dirFile.getPath() + file.getName());
+                } else {
+                    // 否则，如果没有文件分隔符，则补上一个文件分隔符，再加上文件名，才是路径
+                    dirStrArr.add(dirFile.getPath() + File.separator
+                            + file.getName());
+                }
+            }
+        }
+        return dirStrArr;
     }
 }

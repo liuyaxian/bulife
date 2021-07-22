@@ -13,11 +13,6 @@ T
 $src/main/java/BuLifeApplication.java,7\4\74efc4171fbd73755134321e6580718f4c4e9a99
 _
 /src/main/java/com/ruiya/sercice/MainSerice.java,d\f\df7a49d322c324620797a533e3b2ce602e25ecf4
-V
-&src/test/java/com/ruiya/MongoTest.java,8\e\8e58f74166ec48f9db736ece714d6d47c778d783
-:
-
-.bzrignore,e\a\eaaa114e7221d556c2bc2f86d4d18cddf093138a
 i
 9src/main/java/com/ruiya/cache/redis/RedisApplication.java,c\e\ce1a1fe0db96ba8e46f97982529718d0ae8aeb68
 ^
