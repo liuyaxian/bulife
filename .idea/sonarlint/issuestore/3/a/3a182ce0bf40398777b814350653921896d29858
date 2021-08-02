@@ -1,0 +1,23 @@
+
+g
+java:S2095-"QUse try-with-resources or close this "CloseableHttpClient" in a "finally" clause.(¡Ë®ç
+J
+java:S6212"/Declare this local variable with "var" instead.(çáŽâûÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(éà¤
+J
+java:S6212"/Declare this local variable with "var" instead.(©’¸Úúÿÿÿÿ
+E
+java:S6212"/Declare this local variable with "var" instead.(í¡—Å
+J
+java:S6212 "/Declare this local variable with "var" instead.(Ú“´ùþÿÿÿÿ
+E
+java:S6212!"/Declare this local variable with "var" instead.(Ò¨çÐ
+E
+java:S6212&"/Declare this local variable with "var" instead.(ûþÉ²
+J
+java:S6212."/Declare this local variable with "var" instead.(™ÿž›øÿÿÿÿ
+S	java:S1066"9Replace this use of System.out or System.err by a logger.(Ï¢ÅÊþÿÿÿÿ
+>	java:S1089")Either remove or fill this block of code.(”ý¾
+>	java:S108;")Either remove or fill this block of code.(Úîø›
+P
+java:S1144,"5Remove this unused private "apacheHttpClient" method.(Ñ»·üþÿÿÿÿ

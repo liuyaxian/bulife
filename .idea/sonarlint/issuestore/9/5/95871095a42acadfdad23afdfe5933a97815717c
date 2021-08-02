@@ -1,0 +1,26 @@
+
+E
+java:S5411'"*Use the primitive boolean expression here.(Ú¹èÙüÿÿÿÿ
+E
+java:S6212"/Declare this local variable with "var" instead.(”¥»œ
+E
+java:S6212"/Declare this local variable with "var" instead.(Õ¿à«
+E
+java:S6212"/Declare this local variable with "var" instead.(Ôìù 
+S	java:S106"9Replace this use of System.out or System.err by a logger.(×¶¼òÿÿÿÿÿ
+h
+java:S3776""RRefactor this method to reduce its Cognitive Complexity from 46 to the 15 allowed.(°ŠÆı
+D
+java:S6212$"/Declare this local variable with "var" instead.(÷ƒˆ+
+S	java:S106&"9Replace this use of System.out or System.err by a logger.(àÇöşÿÿÿÿ
+E
+java:S6212*"/Declare this local variable with "var" instead.(øˆÙ
+E
+java:S6212/"/Declare this local variable with "var" instead.(ì‹Îÿ
+E
+java:S62120"/Declare this local variable with "var" instead.(Ã÷‹©
+E
+java:S62122"/Declare this local variable with "var" instead.(ëŠØµ
+>	java:S108K")Either remove or fill this block of code.(Úîø›
+E
+java:S2093)"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
