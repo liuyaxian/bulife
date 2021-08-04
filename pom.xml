@@ -47,6 +47,36 @@
             <artifactId>itextpdf</artifactId>
             <version>5.5.13.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>core-renderer</artifactId>
+            <version>R8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>html2pdf</artifactId>
+            <version>3.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.itextpdf.tool</groupId>
+            <artifactId>xmlworker</artifactId>
+            <version>5.5.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.47</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcmail-jdk15on</artifactId>
+            <version>1.47</version>
+        </dependency>
         <!--  pdf 填充空白域 end -->
         <!--  pdf 合并 start -->
         <dependency>
@@ -160,7 +190,7 @@
     </dependencies>
 
 
-<!--    &lt;!&ndash; 防止找不到mybatis的mapper.xml文件，在项目启动时候就导入进去&ndash;&gt;-->
+    <!-- 防止找不到mybatis的mapper.xml文件，在项目启动时候就导入进去-->
 <!--    <resource>-->
 <!--        <directory>src/main/java</directory>-->
 <!--        <includes>-->
