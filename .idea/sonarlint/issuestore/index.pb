@@ -45,5 +45,3 @@ q
 Asrc/main/java/com/ruiya/cache/mongodb/SimpleMongoServiceImpl.java,5\0\5003ded10e303808f478ed07039d14b3d047322c
 _
 /src/main/java/com/ruiya/util/ImageDownload.java,d\5\d5a64be236b20aa3db8125fe8ae7c5ac0788226b
-a
-1src/main/java/com/ruiya/util/PdfFileTemplate.java,5\5\55c04757b2ee2e95344887821aac342e7d7074bb
