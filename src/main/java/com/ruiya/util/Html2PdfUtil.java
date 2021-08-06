@@ -53,7 +53,7 @@ public class Html2PdfUtil {
         // 书签名
         String fieldName = "field";
         // 图片路径
-        String imagePath = "src/main/resources/static/gongzhangtest.jpg";
+        String imagePath = "src/main/resources/static/sign.png";
         // 读取模板文件
         InputStream input = new FileInputStream(new File(templatePath));
         PdfReader reader = new PdfReader(input);
@@ -77,10 +77,10 @@ public class Html2PdfUtil {
         // 获取操作的页面
         PdfContentByte under = stamper.getOverContent(pageNo);
 //        // 根据域的大小缩放图片
-        image.scaleToFit(100, 100);
+        image.scaleToFit(170, 170);
 
         // 添加图片
-        image.setAbsolutePosition(x-50, y+50);
+        image.setAbsolutePosition(x-80, y);
         under.addImage(image);
 
         stamper.close();
