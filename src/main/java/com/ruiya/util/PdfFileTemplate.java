@@ -15,12 +15,12 @@ public class PdfFileTemplate {
     //        System.out.println("结束！");
     //    }
 
-    //    public static void main(String[] args) {
-    //        String filePath = "E:\\刘亚仙\\ITextTest.pdf";
-    //        String savePath = "E:\\刘亚仙\\ITextTest1.pdf";
-    //        String password = "123";
-    //        pdfEncrypt(filePath, savePath, password);
-    //    }
+        public static void main(String[] args) {
+            String filePath = "E:\\刘亚仙\\ITextTest.pdf";
+            String savePath = "E:\\刘亚仙\\ITextTest1.pdf";
+            String password = "123";
+            pdfEncrypt(filePath, savePath, password);
+        }
 
         /**
          * 第一个参数是页面大小。 接下来的参数分别是左，右，上和下页边距。
@@ -199,10 +199,10 @@ public class PdfFileTemplate {
             reader.close();
         }
 
-        public static void main(String[] args) throws Exception {
-            //imageTemplate();
-            getITextRenderer(htmlToStr());
-        }
+//        public static void main(String[] args) throws Exception {
+//            //imageTemplate();
+//            getITextRenderer(htmlToStr());
+//        }
 
         public static String htmlToStr(){
         StringBuilder strline = new StringBuilder("");

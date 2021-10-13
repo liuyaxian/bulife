@@ -2,13 +2,11 @@ package com.ruiya.controller;
 
 
 import com.ruiya.bean.Car;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -54,5 +52,10 @@ public class MainController {
     public Map success(HttpServletRequest request) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         return parameterMap;
+    }
+
+    @GetMapping("/get/name")
+    public String success(@Param("name") String name) {
+        return name;
     }
 }

@@ -32,14 +32,14 @@ public class Html2PdfUtil {
         String fileurl = "E:\\刘亚仙\\ITextTest4.pdf";
         createPdf(htmlToStr(), fileurl);
 
-        Image image = null;
-        List<float[]> ls =  getKeyWords(fileurl,  image);
-            //  返回关键字所在的坐标和页数 float[0] >> X; float[1] >> Y; float[2] >> page
-            ls.forEach(floats -> System.out.println("坐标：X:"+ floats[0] +"   Y: " +floats[1] + "  page:" +floats[2]));
-
-//        //报告生成日期
-//        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-//        String generationdate = dateformat.format(new Date());
+//        Image image = null;
+//        List<float[]> ls =  getKeyWords(fileurl,  image);
+//            //  返回关键字所在的坐标和页数 float[0] >> X; float[1] >> Y; float[2] >> page
+//            ls.forEach(floats -> System.out.println("坐标：X:"+ floats[0] +"   Y: " +floats[1] + "  page:" +floats[2]));
+//
+////        //报告生成日期
+////        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+////        String generationdate = dateformat.format(new Date());
 
 
         imageTemplate();
@@ -253,6 +253,5 @@ public class Html2PdfUtil {
         }
         return arrays;
     }
-
 
 }

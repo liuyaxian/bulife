@@ -2,6 +2,7 @@ package com.ruiya;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author admin
@@ -10,14 +11,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BuLifeApplication {
     public static void main(String[] args) {
         // 1、返回我们 ioc容器
-//        ConfigurableApplicationContext run =
+        ConfigurableApplicationContext run =
                 SpringApplication.run(BuLifeApplication.class, args);
 
-//	// 2、查看容器里面的组件
-//		String[] names = run.getBeanDefinitionNames();
-//		for (String name : names) {
-//			System.out.println(name);
-//		}
+	// 2、查看容器里面的组件
+		String[] names = run.getBeanDefinitionNames();
+		for (String name : names) {
+			System.out.println(name);
+		}
 
         // 单实例对象
         //代理对象，
