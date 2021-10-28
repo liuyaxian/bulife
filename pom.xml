@@ -239,25 +239,43 @@
         </dependency>
         <!--拼音2的处理 end -->
 
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
     </dependencies>
 
+    <build>
+        <resources>
+            <!-- 防止找不到mybatis的mapper.xml文件，在项目启动时候就导入进去-->
+                <resource>
+                    <directory>src/main/java</directory>
+                    <includes>
+                        <include>**/*.xml</include>
+                    </includes>
+                    <filtering>true</filtering>
+                </resource>
+                <resource>
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>**/*.xml</include>
+                        <include>**/*.properties</include>
+                        <include>**/*.yaml</include>
+                    </includes>
+                    <filtering>true</filtering>
+                </resource>
 
-    <!-- 防止找不到mybatis的mapper.xml文件，在项目启动时候就导入进去-->
-<!--    <resource>-->
-<!--        <directory>src/main/java</directory>-->
-<!--        <includes>-->
-<!--            <include>**/*.xml</include>-->
-<!--        </includes>-->
-<!--        <filtering>true</filtering>-->
-<!--    </resource>-->
-<!--    <resource>-->
-<!--        <directory>src/main/resources</directory>-->
-<!--        <includes>-->
-<!--            <include>**/*.xml</include>-->
-<!--            <include>**/*.properties</include>-->
-<!--            <include>**/*.yaml</include>-->
-<!--        </includes>-->
-<!--        <filtering>true</filtering>-->
-<!--    </resource>-->
+        </resources>
+
+    </build>
 
 </project>
