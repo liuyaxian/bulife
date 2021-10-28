@@ -76,8 +76,9 @@ public class PdfTemplate {
          //设置编码
 //        BaseFont baseFont = BaseFont.createFont("simsun.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
          // 不支持中文
-         String filename = "E:\\项目相关\\openAPI\\滨海项目\\滨海相关合同\\揭示书\\泓钰鸿运来1号私募证券投资基金风险揭示书签名.pdf";
-         String destFilePath = "E:\\项目相关\\openAPI\\滨海项目\\滨海相关合同\\合同\\contract_SCW165[已签署]6.pdf";
+         String filename = "E:\\共享文件夹\\项目相关\\openAPI\\滨海项目\\滨海相关合同\\未签署的合同模板\\泓钰鸿运来1号私募证券投资基金基金_基金合同11.pdf";
+         String destFilePath = "E:\\共享文件夹\\项目相关\\openAPI\\滨海项目\\滨海相关合同\\已签署合同\\contract_SCW165[已签署]11.pdf";
+
          BaseFont baseFont = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H",BaseFont.NOT_EMBEDDED);
          PdfReader pdfReader=new PdfReader(filename);
          PdfStamper pdfStamper=new PdfStamper(pdfReader, new FileOutputStream(destFilePath));
@@ -212,18 +213,18 @@ public class PdfTemplate {
         }
         System.out.println("pdf文件合并成功");
     }
-        public static void main(String[] args) throws FileNotFoundException {
-            // 合并后pdf存放路径
-            String bothPath = "D:\\liuyaxian\\ceshi";
+        public static void main(String[] args) throws Exception {
+//            // 合并后pdf存放路径
+//            String bothPath = "D:\\liuyaxian\\ceshi";
+//
+//            //这是需要合并的PDF文件
+//            List<String> files = new ArrayList<>();
+//            files.add("https://pdf.dfcfw.com/pdf/H2_AN202104261487858088_1.pdf");
+//            files.add("https://pdf.dfcfw.com/pdf/H2_AN202103311479199009_1.pdf");
+//            files.add("https://pdf.dfcfw.com/pdf/H2_AN202012311445616982_1.pdf");
+//            mergePdfFiles(files, bothPath);
 
-            //这是需要合并的PDF文件
-            List<String> files = new ArrayList<>();
-            files.add("https://pdf.dfcfw.com/pdf/H2_AN202104261487858088_1.pdf");
-            files.add("https://pdf.dfcfw.com/pdf/H2_AN202103311479199009_1.pdf");
-            files.add("https://pdf.dfcfw.com/pdf/H2_AN202012311445616982_1.pdf");
-            mergePdfFiles(files, bothPath);
-
-            //      getPdfStamper();
+                  getPdfStamper();
 
         }
 

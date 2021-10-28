@@ -1,5 +1,6 @@
 package com.ruiya;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -8,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @author admin
  */
 @SpringBootApplication
+@MapperScan("com.ruiya.mybatisplus.postgresql.mapper")
 public class BuLifeApplication {
     public static void main(String[] args) {
         // 1、返回我们 ioc容器
