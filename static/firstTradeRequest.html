@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>交易记录</title>
+    <style>
+        main {
+            width: 1080px;
+            margin: 0 auto;
+        }
+
+        h3 span {
+            font-weight: normal;
+            font-size: 14px;
+            vertical-align: text-bottom;
+        }
+
+        table {
+            width: 100%;
+            font-size: 14px;
+            color: #333;
+        }
+
+        tr {
+            line-height: 24px;
+        }
+
+        td {
+            width: 25%;
+        }
+
+        .table2 {
+            margin-top: 20px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        .table2 th {
+            background: #f7f7f7;
+        }
+        .table2 td {
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <h3>{#invnm}</h3>
+    <table border="0">
+        <tr>
+            <td>客户编号：{#custno}</td>
+            <td>性别：{#sex}</td>
+            <td>年龄：{#age}</td>
+            <td>身份证号：{#idno}</td>
+        </tr>
+    </table>
+    <table class="table2" border="0">
+        <tr>
+            <th>申请日期</th>
+            <th>申请时间</th>
+            <th>确认时间</th>
+            <th>产品代码</th>
+            <th>产品名称</th>
+            <th>产品类型</th>
+            <th>风险级别</th>
+            <th>交易类型</th>
+            <th>银行卡</th>
+            <th>交易状态</th>
+            <th>交易金额</th>
+            <th>确认金额</th>
+            <th>确认份额</th>
+        </tr>
+        <tr>
+            <td>{#apdt}</td>
+            <td>{#aptm}</td>
+            <td>{#ackdt}</td>
+            <td>{#fundid}</td>
+            <td>{#fundchinesenm}</td>
+            <td>{#fundtpnm}</td>
+            <td>{#risklevelname}</td>
+            <td>{#apkind}</td>
+            <td>{#bankno}</td>
+            <td>成功</td>
+            <td>{#subamt}</td>
+            <td>{#ackamt}</td>
+            <td>{#ackquty}</td>
+        </tr>
+    </table>
+</main>
+</body>
+</html>

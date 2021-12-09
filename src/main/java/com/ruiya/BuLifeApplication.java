@@ -10,6 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 @SpringBootApplication
 @MapperScan("com.ruiya.mybatisplus.postgresql.mapper")
+
 public class BuLifeApplication {
     public static void main(String[] args) {
         // 1、返回我们 ioc容器
