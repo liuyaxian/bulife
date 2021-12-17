@@ -78,6 +78,8 @@ public class MyThreadPoolExecutor {
 
        try {
            reentrantLock.lock();
+       } catch (Exception exception){
+
        } finally {
            reentrantLock.unlock();
        }

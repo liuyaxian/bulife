@@ -17,11 +17,11 @@ public class BuLifeApplication {
         ConfigurableApplicationContext run =
                 SpringApplication.run(BuLifeApplication.class, args);
 
-	// 2、查看容器里面的组件
-		String[] names = run.getBeanDefinitionNames();
-		for (String name : names) {
-			System.out.println(name);
-		}
+//	// 2、查看容器里面的组件
+//		String[] names = run.getBeanDefinitionNames();
+//		for (String name : names) {
+//			System.out.println(name);
+//		}
 
         // 单实例对象
         //代理对象，

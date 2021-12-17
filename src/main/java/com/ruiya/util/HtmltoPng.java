@@ -57,7 +57,7 @@ public class HtmltoPng {
 
     public static void testJava2DRenderer() throws IOException {
 
-        String htmlStr = ResourceUtils.getURL("static/firstTradeRequest1.html").getPath();
+        String htmlStr = ResourceUtils.getURL("static/firstTradeRequest.html").getPath();
         //string转为inputstream流
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(htmlStr.getBytes());
 //        File targetFile = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX+"firstTradeRequest.html");
