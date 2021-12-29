@@ -1,5 +1,6 @@
 package com.ruiya;
 
+import com.ruiya.bean.FundBalanceDTO;
 import com.ruiya.bean.Pet;
 import com.ruiya.bean.User;
 import lombok.extern.slf4j.Slf4j;
@@ -8,10 +9,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -82,4 +86,35 @@ import java.util.Random;
         System.out.println("userList = " + userList);
     }
 
+
+    @Test
+     public void get(){
+        // 1001263008         1001883566
+         queryCustFundBalance("1001883566");
+     }
+
+
+    public List<FundBalanceDTO> queryCustFundBalance(String custNo){
+
+        List<FundBalanceDTO> fundBalanceDTOList = new ArrayList<>();
+//        Pattern pattern = Pattern.compile("^((?!"+"ZYB"+").)*$", Pattern.CASE_INSENSITIVE);
+
+        //封装查询条件
+        List<AggregationOperation> operations = new ArrayList<>();
+//        operations.add(Aggregation.group("fundid").sum("balance").as("balance").sum("mktvalue").as("mktvalue"));
+//        operations.add(Aggregation.match(Criteria.where("custno").is(custNo).and("mktvalue").gt(0).and("fundid").regex(pattern)));
+
+        operations.add(Aggregation.match(Criteria.where("custno").is(custNo)));
+        operations.add(Aggregation.group("fundid").sum("balance").as("balance"));
+
+        Aggregation aggregation = Aggregation.newAggregation(operations);
+        AggregationResults<FundBalanceDTO> fundbalance = mongoTemplate.aggregate(aggregation, "fundbalance", FundBalanceDTO.class);
+
+        System.out.println("fundbalance = " + fundbalance.getMappedResults().size());
+        for (int i = 0; i < fundbalance.getMappedResults().size(); i++) {
+            fundBalanceDTOList.add(fundbalance.getMappedResults().get(i));
+        }
+
+        return fundBalanceDTOList;
+    }
 }

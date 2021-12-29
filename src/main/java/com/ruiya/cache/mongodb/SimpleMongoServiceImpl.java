@@ -210,4 +210,6 @@ public class SimpleMongoServiceImpl implements SimpleMongoService {
 //            return mongoTemplate.find(query, clazz, collectName);
 //        }
 //    }
+
+
 }
