@@ -21,7 +21,7 @@ public class FreemarkerUtilsTest {
     public void test(HttpServletResponse response) {
         try {
             Map<String,Object> map=new HashMap<>();
-            map.put("msg","html--生成图片测试");
+            map.put("msg","html--生成图片测试     ");
             map.put("img","https://upload-images.jianshu.io/upload_images/912344-3054132dd6939004.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240");
             FreemarkerUtils.turnImage("index.ftl",map,response);
         } catch (Exception e) {

@@ -32,8 +32,8 @@ public class WebsiteHTtrack {
 
 
      public void getHttpClient(){
-         HttpClient client = new Client();
-         GetMethod get = new GetMethod(url);
+//         HttpClient client = new Client();
+//         GetMethod get = new GetMethod(url);
 
      }
 
