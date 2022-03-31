@@ -18,7 +18,11 @@ public class ExcelToSQLInsert {
     public static void main(String[] args) throws Exception {
 
              // 读取文件内容
-           readExcelData("D:\\企业微信\\WXWork\\1688851025356947\\Cache\\File\\2022-03\\备选池基金信息表-众禄生产环境全量标的 - 20220330.xlsx");
+//           readExcelData("D:\\企业微信\\WXWork\\1688851025356947\\Cache\\File\\2022-03\\备选池基金信息表-众禄生产环境全量标的 - 20220330.xlsx");
+
+        readExcelData("C:\\Users\\liu_y\\Desktop\\新建 XLSX 工作表.xlsx");
+
+
 
     }
 
@@ -57,9 +61,9 @@ public class ExcelToSQLInsert {
             }
             // 遍历所有列获取数据
             // 文件名，
-            String insertsql = "INSERT INTO comb_fundtype\n" +
-                    " (fundid, fundrisklevel, fundtypecode, fundtypename, assetclasscode, assetclassname, assetcategorycode,\n" +
-                    " assetcategoryname) values ('%s','%s','%s','%s','%s','%s','%s', '%s');";
+//            String insertsql = "INSERT INTO comb_fundtype\n" +
+//                    " (fundid, fundrisklevel, fundtypecode, fundtypename, assetclasscode, assetclassname, assetcategorycode,\n" +
+//                    " assetcategoryname) values ('%s','%s','%s','%s','%s','%s','%s', '%s');";
 //            for (int i = 0; i < columNum; i++) {
 //                XSSFCell cell = row_.getCell(i);
 //                if (cell == null){
@@ -67,13 +71,19 @@ public class ExcelToSQLInsert {
 //                    continue;
 //                }
 
-                insertsql =  String.format(insertsql, getCellValue(row_.getCell(0)),
-                                getCellValue(row_.getCell(2)),
-                                getCellValue(row_.getCell(3)),
-                                        getCellValue(row_.getCell(4)),
-                                                getCellValue(row_.getCell(5)),
-                                                        getCellValue(row_.getCell(6)),
-                        getCellValue(row_.getCell(7)),getCellValue(row_.getCell(8)));
+//                insertsql =  String.format(insertsql, getCellValue(row_.getCell(0)),
+//                                getCellValue(row_.getCell(2)),
+//                                getCellValue(row_.getCell(3)),
+//                                        getCellValue(row_.getCell(4)),
+//                                                getCellValue(row_.getCell(5)),
+//                                                        getCellValue(row_.getCell(6)),
+//                        getCellValue(row_.getCell(7)),getCellValue(row_.getCell(8)));
+
+            String insertsql = " INSERT INTO public.comb_fund_alternative_pool\n" +
+                    "(servicetype, fundid)\n" +
+                    "VALUES('3', '%s');";
+
+            insertsql =  String.format(insertsql, getCellValue(row_.getCell(0)));
                 System.out.println(insertsql);
                 out.write(insertsql+ "\n");
         }
