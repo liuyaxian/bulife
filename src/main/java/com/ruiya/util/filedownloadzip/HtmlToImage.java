@@ -7,10 +7,12 @@ package com.ruiya.util.filedownloadzip;
  * @history:
  */
 
-import gui.ava.html.parser.HtmlParser;
-import gui.ava.html.parser.HtmlParserImpl;
-import gui.ava.html.renderer.ImageRenderer;
-import gui.ava.html.renderer.ImageRendererImpl;
+//import com.itextpdf.layout.renderer.ImageRenderer;
+//import com.lowagie.text.html.HtmlParser;
+//import gui.ava.html.parser.HtmlParser;
+//import gui.ava.html.parser.HtmlParserImpl;
+//import gui.ava.html.renderer.ImageRenderer;
+//import gui.ava.html.renderer.ImageRendererImpl;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -34,11 +36,11 @@ public class HtmlToImage {
 //        URL pathAfterModified = HtmlToImage.class.getClassLoader().getResource("static/firstTradeRequest1.html");
 //        String HtmlTemplateStr = readFile(pathAfterModified.getPath());
 
-        HtmlParser htmlParser = new HtmlParserImpl();
-        htmlParser.loadHtml(HtmlTemplateStr);
-        // html 是我的html代码
-        ImageRenderer imageRenderer = new ImageRendererImpl(htmlParser);
-        imageRenderer.saveImage("E:\\lcxq1.png");
+//        HtmlParser htmlParser = new HtmlParserImpl();
+//        htmlParser.loadHtml(HtmlTemplateStr);
+//        // html 是我的html代码
+//        ImageRenderer imageRenderer = new ImageRendererImpl(htmlParser);
+//        imageRenderer.saveImage("E:\\lcxq1.png");
     }
 
     //filePathAndName : 你要转换的html的 绝对路径

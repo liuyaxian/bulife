@@ -1,10 +1,14 @@
 package com.ruiya;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ruiya.taobao.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
@@ -18,17 +22,21 @@ public class RedisTest {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
-//	@Autowired
-//	RedisTemplate redisTemple;
+	@Autowired
+    RedisTemplate redisTemple;
 
     @Test
-    void testRedisRemoveAndMongoDBDelElse(){
+    void testRedisRemoveAndMongoDBDelElse() throws JsonProcessingException {
         String  key = "Message [bizcode=3117, mctcode=1000, bodyJson={\"code\":\"XFJJ_SY\"}, idfa=null, imei=null, appVersion=4.3.7, retDataType=null]";
         String  key1 ="Message [bizcode=3127, mctcode=1000, bodyJson={}, idfa=null, imei=null, appVersion=4.3.7, retDataType=null]";
         Set<String> keySet = stringRedisTemplate.keys("Message [bizcode=3127,"+"*");
         for (String s : keySet) {
             stringRedisTemplate.delete(s);
         }
+
+
+        String  jsonUser = new ObjectMapper().writeValueAsString(new User());
+
     }
 
 

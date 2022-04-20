@@ -17,8 +17,8 @@ public class SampleTest {
     @Test
     public void testSelect(){
         System.out.println("ddddddd start --- ");
-        List<Fundinfo> productInfoList = productMapper.selectList(null);
-        productInfoList.forEach(System.out::println);
+//        List<Fundinfo> productInfoList = productMapper.selectList(null);
+//        productInfoList.forEach(System.out::println);
 
     }
 
