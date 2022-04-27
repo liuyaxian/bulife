@@ -10,5 +10,6 @@ public class TestPING {
         Jedis jedis = new Jedis("172.18.10.85", 6379);
         jedis.ping();
 
+        jedis.close();
     }
 }
