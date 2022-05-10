@@ -1,5 +1,9 @@
 package com.ruiya.util.thread;
 
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -14,10 +18,6 @@ import java.util.concurrent.locks.ReentrantLock;
 public class MyThreadPoolExecutor {
 
     public static void main(String[] args) {
-
-
-        System.out.println("Runtime.getRuntime().availableProcessors() = " + Runtime.getRuntime().availableProcessors());
-
 
         // 核心线程数量
         int corePoolSize = 1;
@@ -84,5 +84,32 @@ public class MyThreadPoolExecutor {
            reentrantLock.unlock();
        }
 
+        threadPoolExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    query();
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
+
+
+    public static void query() throws UnknownHostException, MalformedURLException {
+        InetAddress byName = InetAddress.getByName("https://www.luckywhb.com/");
+        System.out.println("byName1.getAddress() = " + byName.getAddress());
+        // 规范的名字
+        System.out.println("byName1.getCanonicalHostName() = " + byName.getCanonicalHostName());
+        // ip
+        System.out.println("byName1.getHostAddress() = " + byName.getHostAddress());
+        // 域名 电脑名
+        System.out.println("byName1.getHostName() = " + byName.getHostName());
+        URL address = new URL("www.luckywhb.com");
+    }
+
+
 }

@@ -1,36 +1,50 @@
 package com.yaruida.utils;
 
-
-import com.itextpdf.kernel.xmp.impl.Base64;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.log4j.Logger;
 
 import javax.net.ssl.*;
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
 import java.io.*;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateEncodingException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
-/***
- * 根据域名获取对应的证书
- */
-public class GetCertificate {
+public class GetCertificateUtils {
 
 
-    private static final String BEGIN_CERT = "-----BEGIN CERTIFICATE-----";
-    private static final String END_CERT = "-----END CERTIFICATE-----";
+    private static final Logger logger = Logger.getLogger(GetCertificateUtils.class);
 
-    public static void main(String[] args) throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
 
-        getX509Certificate("www.zlfund.com");
+    public static void main(String[] args){
+
+        HttpServletResponse  httpResponse = null;
+        try {
+            String certificate =  getX509Certificate("www.luckywhb.com", "mycert.cer");
+            System.out.println("certificate:" + certificate);
+
+            InputStream in = new FileInputStream("test.cer");
+            OutputStream outputStream = new BufferedOutputStream(httpResponse.getOutputStream());
+            byte [] buff = new byte[]{};
+            int n;
+            while ((n=in.read(buff))!=-1){
+                outputStream.write(buff, 0, n);
+            }
+            outputStream.flush();
+            outputStream.close();
+            in.close();
+        } catch (Exception e){
+            logger.error("获取证书异常" + e.getMessage());
+        }
 
     }
 
 
-    private static String getX509Certificate (String url) throws IOException, KeyStoreException, CertificateException, NoSuchAlgorithmException, KeyManagementException, IOException {
+    public static String getX509Certificate (String url, String fileName) throws IOException, KeyStoreException, CertificateException, NoSuchAlgorithmException, KeyManagementException, IOException {
         File file = new File("jssecacerts");
         if (file.isFile() == false) {
             char SEP = File.separatorChar;
@@ -66,65 +80,53 @@ public class GetCertificate {
             socket.startHandshake();
             socket.close();
         } catch (SSLException e) {
-            System.out.println("Starting SSL handshake...  异常   ------------" + e.getMessage());
+            logger.error("Starting SSL handshake...  异常   ------------" + e.getMessage());
         }
         X509Certificate[] chain = tm.chain;
-        if (chain == null) {
-            System.out.println("无法获取服务器证书链");
-            return "";
-        }
-        BufferedWriter writer = new BufferedWriter(new FileWriter("mycert.cer"));
-        writer.write(BEGIN_CERT);
-        writer.newLine();
-        for (int i = 0; i < chain.length; i++) {
-            X509Certificate cert = chain[i];
-            writer.newLine();
-            writer.write(convertToPem(cert));
-        }
-        writer.newLine();
-        writer.write(END_CERT);
-        writer.flush();
-        writer.close();
 
-        InputStream inputStream = null;
-        byte[] data = null;
-        // 读取图片字节数组
-        inputStream = new FileInputStream(file);
-        data = new byte[in.available()];
-        inputStream.read(data);
-        inputStream.close();
-        return new String(Base64.encode(data));
+        String data = "";
+        if (chain == null) {
+            logger.error("无法获取服务器证书链");
+            return data;
+        }
+        try {
+            data = convertToPem(chain,fileName);
+        } catch (Exception e) {
+            logger.error("转化成pem文件:" + e.getMessage());
+        }
+        return  data;
     }
 
+    /**
+     * 转化成pem文件
+     * @param chain
+     * @throws Exception
+     */
+    private static String convertToPem(X509Certificate[] chain, String fileName) throws Exception {
+        String cert_begin = "-----BEGIN CERTIFICATE-----\n";
+        String end_cert = "-----END CERTIFICATE-----";
 
-    public String getCertificateStream(String file) throws IOException {
-
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+        writer.write(cert_begin);
+        writer.newLine();
+        if(chain.length == 0){
+            logger.error("无法获取服务器证书链");
+            return "";
+        }
+        X509Certificate cert = chain[0];
+        String pemCert = DatatypeConverter.printBase64Binary(cert.getEncoded()).replaceAll("(.{64})", "$1\n");
+        writer.write(pemCert);
+        writer.write(end_cert);
+        writer.newLine();
+        writer.flush();
+        writer.close();
         InputStream in = null;
         byte[] data = null;
-        // 读取图片字节数组
-        in = new FileInputStream(file);
+        in = new FileInputStream(fileName);
         data = new byte[in.available()];
         in.read(data);
         in.close();
-        return new String(Base64.encode(data));
-    }
-
-    public final static String LINE_SEPARATOR = System.getProperty("line.separator");
-
-    /**
-     * 转化成pem文件，并按照64位分隔
-     * @param cert
-     * @return
-     * @throws CertificateEncodingException
-     */
-    protected static String convertToPem(X509Certificate cert) throws CertificateEncodingException {
-        Base64 encoder = new Base64();
-        String cert_begin = "-----BEGIN CERTIFICATE-----\n";
-        String end_cert = "-----END CERTIFICATE-----";
-        byte[] derCert = cert.getEncoded();
-        String pemCertPre = new String(encoder.encode(derCert));
-        String pemCert = cert_begin + pemCertPre + end_cert;
-        return DatatypeConverter.printBase64Binary(cert.getEncoded()).replaceAll("(.{64})", "$1\n");
+        return new String(Base64.encodeBase64(data));
     }
 
 
@@ -134,7 +136,7 @@ public class GetCertificate {
     private static class SavingTrustManager implements X509TrustManager {
 
         private final X509TrustManager tm;
-        private X509Certificate[] chain;
+        private X509Certificate[]chain ;
 
         SavingTrustManager(X509TrustManager tm) {
             this.tm = tm;
@@ -162,13 +164,9 @@ public class GetCertificate {
      * @return
      */
     public static char[]  getPassphrase(String url){
-        String host = "";
-        int port = 443;
         String[] urls = new String[]{url};
         if ((urls.length == 1) || (urls.length == 2)) {
             String[] c = urls[0].split(":");
-            host = c[0];
-            port = (c.length == 1) ? 443 : Integer.parseInt(c[1]);
             // 安装证书与查看证书默认密码是 changeit
             String p = (urls.length == 1) ? "changeit" : urls[1];
             return p.toCharArray();
@@ -177,5 +175,4 @@ public class GetCertificate {
             return new char[]{};
         }
     }
-
 }

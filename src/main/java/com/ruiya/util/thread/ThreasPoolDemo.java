@@ -1,5 +1,7 @@
 package com.ruiya.util.thread;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.concurrent.*;
 
 public class ThreasPoolDemo {
@@ -36,20 +38,44 @@ public class ThreasPoolDemo {
         // 阿里巴巴推荐使用自定义线程池   非核心  20 -10 = 10 个
         // 提交优先级 ：核心线程 >
         // 执行优先级 ： 那里有任务就在哪里执行
-        ThreadPoolExecutor threadPoolExecutor4 = new ThreadPoolExecutor(10, 20,
-                0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(10)
-//                new RejectedExecutionHandler() {
+        ThreadPoolExecutor threadPoolExecutor4 = new ThreadPoolExecutor(12, 12,
+                0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(4)
+//                , new RejectedExecutionHandler() {
 //                    @Override
 //                    public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-//
+//                        for (int i =1; i<= 10000000; i++){
+//                            System.out.println("当前线程： " + Thread.currentThread() + "执行i： "+ i);
+//                        }
 //                    }
 //                }
         );
 
-        for (int i =1; i<= 100; i++){
-            threadPoolExecutor4.execute(new MyTask(i));
-        }
+        for (int i =1; i<= 10000000; i++){
+            threadPoolExecutor4.execute(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i1 = 0; i1 < 100000; i1++) {
+                        // 业务逻辑
+                        InetAddress byName = null;
+                        try {
+                            byName = InetAddress.getByName("www.luckywhb.com");
+                        } catch (UnknownHostException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("byName1.getAddress() = " + byName.getAddress());
+                        // 规范的名字
+                        System.out.println("byName1.getCanonicalHostName() = " + byName.getCanonicalHostName());
+                        // ip
+                        System.out.println("byName1.getHostAddress() = " + byName.getHostAddress());
+                        // 域名 电脑名
+                        System.out.println("byName1.getHostName() = " + byName.getHostName());
+                        System.out.println("当前线程： " + Thread.currentThread() + "执行i： "+ i1);
 
+                    }
+
+                }
+            });
+      }
     }
 
 }
@@ -70,7 +96,7 @@ public class ThreasPoolDemo {
 
 class  MyTask implements  Runnable{
     int i =0;
-    public  MyTask(int i){
+    public  MyTask(){
         this.i =i;
     }
     @Override
@@ -78,7 +104,16 @@ class  MyTask implements  Runnable{
         System.out.println(Thread.currentThread().getName() +"做第" + i + "个项目");
         try{
             // 业务逻辑
-            Thread.sleep(1000);
+            InetAddress byName = InetAddress.getByName("www.luckywhb.com");
+            System.out.println("byName1.getAddress() = " + byName.getAddress());
+            // 规范的名字
+            System.out.println("byName1.getCanonicalHostName() = " + byName.getCanonicalHostName());
+            // ip
+            System.out.println("byName1.getHostAddress() = " + byName.getHostAddress());
+            // 域名 电脑名
+            System.out.println("byName1.getHostName() = " + byName.getHostName());
+
+
         } catch (Exception e){
             e.printStackTrace();
         }

@@ -1,0 +1,645 @@
+<!--box-->
+<div class="right_gs">
+    <ul class="clearfix">
+      <li class="right_gs_li1" id=gs1 onmouseover="choise2(5,1)">国内</li>
+      <li class="right_gs_li2" id=gs3 onmouseover="choise2(5,3)">美国</li>
+      <li class="right_gs_li2" id=gs5 onmouseover="choise2(5,5)">欧洲</li>
+      <li class="right_gs_li2" id=gs2 onmouseover="choise2(5,2)">亚洲</li>
+    </ul>
+</div>
+<!--gs1-->
+<div id="tow1">
+    <div class="right_gs2">
+        <ul class="clearfix">
+          <li class="right_gs2_li1" id="gsn1" onmouseover="choise3(3,1)">上证指数</li>
+          <li class="right_gs2_li2" id="gsn2" onmouseover="choise3(3,2)">创业板指</li>
+          <li class="right_gs2_li2" id="gsn3" onmouseover="choise3(3,3)">深证成指</li>
+          <li class="right_gs2_li3"></li>
+        </ul>
+    </div>
+    <div class="b_border2" id="Third1">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="148" align="center" bgcolor="#FFFFFF">
+                    <div id="szzs_info" class="zsChartList-item-info"></div>
+                    <div class="zsChartList-item-chart-wrap">
+                        <div id="szzs_chart" class="zsChartList-item-chart"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td height="20" align="center" bgcolor="#FFFFFF">上证指数:</td>
+        <td align="center" bgcolor="#FFFFFF" class="red">3031.46</td>
+        <td align="center" bgcolor="#FFFFFF" class="red">27.32</td>
+        <td align="center" bgcolor="#FFFFFF" class="red">(0.91%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">创业板指:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="red">2270.09</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="red">42.02</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="red">(1.89%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">深证成指:</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">10880.71</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">115.08</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">(1.07%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">中证全债:</td>
+        <td align="center" bgcolor="#e6f0f7"></td>
+        <td align="right" bgcolor="#e6f0f7" colspan="2">到期收益率：%</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Third2">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="148" align="center" bgcolor="#FFFFFF">
+                    <div id="cybz_info" class="zsChartList-item-info"></div>
+                    <div class="zsChartList-item-chart-wrap">
+                        <div id="cybz_chart" class="zsChartList-item-chart"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!-- <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://www.jjmmw.com/imageindex/zhishu.png" width="245" height="125" /></td>
+          </tr>
+        </table> -->
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">上证指数:</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">3031.46</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">27.32</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">(0.91%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#FFFFFF">创业板指:</td>
+        <td width="28%" align="center" bgcolor="#FFFFFF" class="red">2270.09</td>
+        <td width="22%" align="center" bgcolor="#FFFFFF" class="red">42.02</td>
+        <td width="27%" align="center" bgcolor="#FFFFFF" class="red">(1.89%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">深证成指:</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">10880.71</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">115.08</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">(1.07%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">中证全债:</td>
+        <td align="center" bgcolor="#e6f0f7"></td>
+        <td align="right" bgcolor="#e6f0f7" colspan="2">到期收益率：%</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Third3">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="148" align="center" bgcolor="#FFFFFF">
+                    <div id="szcz_info" class="zsChartList-item-info"></div>
+                    <div class="zsChartList-item-chart-wrap">
+                        <div id="szcz_chart" class="zsChartList-item-chart"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">上证指数:</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">3031.46</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">27.32</td>
+        <td align="center" bgcolor="#e6f0f7" class="red">(0.91%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">创业板指:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="red">2270.09</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="red">42.02</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="red">(1.89%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#FFFFFF">深证成指:</td>
+        <td align="center" bgcolor="#FFFFFF" class="red">10880.71</td>
+        <td align="center" bgcolor="#FFFFFF" class="red">115.08</td>
+        <td align="center" bgcolor="#FFFFFF" class="red">(1.07%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">中证全债:</td>
+        <td align="center" bgcolor="#e6f0f7"></td>
+        <td align="right" bgcolor="#e6f0f7" colspan="2">到期收益率：%</td>
+    </tr>
+</table>
+    </div>
+</div>
+<!--gs1-->
+<!--gs2-->
+<div id="tow2" style="DISPLAY: none;">
+    <div class="right_gs2">
+        <ul class="clearfix">
+            <li class="right_gs3_li1" id="gst21" onmouseover="choise4(4,1)">香港恒生</li>
+            <li class="right_gs3_li2" id="gst22" onmouseover="choise4(4,2)">台湾加权</li>
+            <li class="right_gs3_li2" id="gst23" onmouseover="choise4(4,3)">新加坡</li>
+            <li class="right_gs3_li2" id="gst24" onmouseover="choise4(4,4)">日经</li>
+            <li class="right_gs3_li3"></li>
+        </ul>
+    </div>
+    <div class="b_border2" id="Four21">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://ichart.yahoo.com/t?s=^hsi" width="192" height="96" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#FFFFFF">香港恒生:</td>
+        <td width="28%" align="center" bgcolor="#FFFFFF" class="green">19612.67</td>
+        <td width="22%" align="center" bgcolor="#FFFFFF" class="green">-389.29</td>
+        <td width="27%" align="center" bgcolor="#FFFFFF" class="green">(-1.95%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">台湾加权:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">15992.17</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-56.75</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-0.35%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">新加坡:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">3231.96</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-43.11</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-1.32%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">日经指数:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">26141.30</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-178.04</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-0.68%)</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Four22">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://ichart.yahoo.com/t?s=%5ETWII" width="192" height="96" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">香港恒生:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">19612.67</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-389.29</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-1.95%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#FFFFFF">台湾加权:</td>
+        <td width="28%" align="center" bgcolor="#FFFFFF" class="green">15992.17</td>
+        <td width="22%" align="center" bgcolor="#FFFFFF" class="green">-56.75</td>
+        <td width="27%" align="center" bgcolor="#FFFFFF" class="green">(-0.35%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">新加坡:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">3231.96</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-43.11</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-1.32%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">日经指数:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">26141.30</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-178.04</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-0.68%)</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Four23">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://ichart.yahoo.com/t?s=%5ESTI" width="192" height="96" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">香港恒生:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">19612.67</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-389.29</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-1.95%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">台湾加权:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">15992.17</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-56.75</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-0.35%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#FFFFFF">新加坡:</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">3231.96</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">-43.11</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">(-1.32%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">日经指数:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">26141.30</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-178.04</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-0.68%)</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Four24">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://ichart.yahoo.com/t?s=%5EN225" width="192" height="96" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#FFFFFF">香港恒生:</td>
+        <td width="28%" align="center" bgcolor="#FFFFFF" class="green">19612.67</td>
+        <td width="22%" align="center" bgcolor="#FFFFFF" class="green">-389.29</td>
+        <td width="27%" align="center" bgcolor="#FFFFFF" class="green">(-1.95%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">台湾加权:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">15992.17</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-56.75</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-0.35%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">新加坡:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">3231.96</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-43.11</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-1.32%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">日经指数:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">26141.30</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-178.04</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-0.68%)</td>
+    </tr>
+</table>
+    </div>
+</div>
+<!--gs2 end-->
+<!--gs3-->
+<div id="tow3" style="DISPLAY: none;">
+    <div class="right_gs2">
+        <ul class="clearfix">
+            <li class="right_gs3_li1" id="gst31" onmouseover="choise5(4,1)">道琼斯</li>
+            <li class="right_gs3_li2" id="gst32" onmouseover="choise5(4,2)">纳斯达克</li>
+            <li class="right_gs3_li2" id="gst33" onmouseover="choise5(4,3)">标普500</li>
+            <li class="right_gs3_li2" id="gst34" onmouseover="choise5(4,4)">美指</li>
+            <li class="right_gs3_li3"></li>
+        </ul>
+    </div>
+    <div class="b_border2" id="Four31">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://ichart.yahoo.com/t?s=%5EDJI" width="192" height="96" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#FFFFFF">道琼斯:</td>
+        <td width="28%" align="center" bgcolor="#FFFFFF" class="green">32245.70</td>
+        <td width="22%" align="center" bgcolor="#FFFFFF" class="green">-653.67</td>
+        <td width="27%" align="center" bgcolor="#FFFFFF" class="green">(-1.99%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">纳斯达克:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">11623.25</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-521.41</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-4.29%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">标普500:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">3991.24</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-132.10</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-3.20%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">美指:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">3985.35</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-298.77</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-6.97%)</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Four32">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://ichart.yahoo.com/t?s=%5EIXIC" width="192" height="96" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">道琼斯:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">32245.70</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-653.67</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-1.99%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#FFFFFF">纳斯达克:</td>
+        <td width="28%" align="center" bgcolor="#FFFFFF" class="green">11623.25</td>
+        <td width="22%" align="center" bgcolor="#FFFFFF" class="green">-521.41</td>
+        <td width="27%" align="center" bgcolor="#FFFFFF" class="green">(-4.29%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">标普500:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">3991.24</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-132.10</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-3.20%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">美指:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">3985.35</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-298.77</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-6.97%)</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Four33">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://ichart.yahoo.com/t?s=%5EGSPC" width="192" height="96" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">道琼斯:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">32245.70</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-653.67</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-1.99%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">纳斯达克:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">11623.25</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-521.41</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-4.29%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#FFFFFF">标普500:</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">3991.24</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">-132.10</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">(-3.20%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">美指:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">3985.35</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-298.77</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-6.97%)</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Four34">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://ichart.yahoo.com/t?s=%5EXAX" width="192" height="96" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">道琼斯:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">32245.70</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-653.67</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-1.99%)</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">纳斯达克:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">11623.25</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-521.41</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">(-4.29%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">标普500:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">3991.24</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-132.10</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">(-3.20%)</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#FFFFFF">美指:</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">3985.35</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">-298.77</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">(-6.97%)</td>
+    </tr>
+</table>
+    </div>
+</div>
+<!--gs3 end-->
+<!--gs4-->
+<div id="tow4" style="DISPLAY: none;">
+    <div class="right_gs2">
+        <ul class="clearfix">
+            <li class="right_gs2_li1 right_gs22_li1" style=""id=gsn41 onmouseover="choise20(5,1)">人民币</li>
+            <li class="right_gs2_li2 right_gs22_li2" id=gsn42 onmouseover="choise20(5,2)">欧元</li>
+            <li class="right_gs2_li2 right_gs22_li2" id=gsn43 onmouseover="choise20(5,3)">港币</li>
+            <li class="right_gs2_li2 right_gs22_li2" id=gsn44 onmouseover="choise20(5,4)">原油</li>
+            <li class="right_gs2_li2 right_gs22_li2" id=gsn45 onmouseover="choise20(5,5)">黄金</li>
+            <li class="right_gs2_li3"></li>
+        </ul>
+    </div>
+    <div class="b_border2" id="Third41">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="170" align="center" bgcolor="#FFFFFF"><img src="http://image.sinajs.cn/newchart/v5/forex/min30_m/USDCNY.gif" width="240" height="125" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#FFFFFF">人民币：</td>
+        <td width="23%" align="center" bgcolor="#FFFFFF" class="green">6.70</td>
+        <td width="23%" align="center" bgcolor="#FFFFFF" class="green">-0.47%</td>
+    </tr>
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#e6f0f7">欧元</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">1.06</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">0.19%</td>
+    </tr>
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#e6f0f7">港币</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">7.85</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">0.00%</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Third42">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="170" align="center" bgcolor="#FFFFFF"><img src="http://image.sinajs.cn/newchart/v5/forex/min5_m/EURUSD.gif" width="240" height="125" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#e6f0f7">人民币：</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="green">6.70</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="green">-0.47%</td>
+    </tr>
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#FFFFFF">欧元</td>
+        <td width="23%" align="center" bgcolor="#FFFFFF" class="red">1.06</td>
+        <td width="23%" align="center" bgcolor="#FFFFFF" class="red">0.19%</td>
+    </tr>
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#e6f0f7">港币</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">7.85</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">0.00%</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Third43">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="170" align="center" bgcolor="#FFFFFF"><img src="http://image.sinajs.cn/newchart/v5/forex/min5_m/USDHKD.gif" width="240" height="125" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#FFFFFF">人民币：</td>
+        <td width="23%" align="center" bgcolor="#FFFFFF" class="green">6.70</td>
+        <td width="23%" align="center" bgcolor="#FFFFFF" class="green">-0.47%</td>
+    </tr>
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#e6f0f7">欧元</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">1.06</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">0.19%</td>
+    </tr>
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#e6f0f7">港币</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">7.85</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">0.00%</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Third44">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="192" align="center" bgcolor="#FFFFFF"><img src="http://image.sinajs.cn/newchart/v5/futures/global/mins/CL.gif" width="240" height="125" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#FFFFFF">原油</td>
+        <td width="23%" align="center" bgcolor="#FFFFFF" class="green">101.56</td>
+        <td width="23%" align="center" bgcolor="#FFFFFF" class="green">-0.01%</td>
+    </tr>
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#e6f0f7">黄金</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">1862.72</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="red">0.00%</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="Third45">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="192" align="center" bgcolor="#FFFFFF"><img src="http://image.sinajs.cn/newchart/v5/futures/global/mins/GC.gif" width="240" height="125" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#e6f0f7">原油</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="green">101.56</td>
+        <td width="23%" align="center" bgcolor="#e6f0f7" class="green">-0.01%</td>
+    </tr>
+    <tr>
+        <td width="31%" height="20" align="center" bgcolor="#FFFFFF">黄金</td>
+        <td width="23%" align="center" bgcolor="#FFFFFF" class="red">1862.72</td>
+        <td width="23%" align="center" bgcolor="#FFFFFF" class="red">0.00%</td>
+    </tr>
+</table>
+    </div>
+</div>
+<!--gs4-->
+<!--gs5-->
+<div id="tow5" style="DISPLAY: none;">
+    <div class="right_gs2">
+        <ul class="clearfix">
+            <li class="right_gs2_li1" id=gsny51 onmouseover="choise21(3,1)">伦敦指数</li>
+            <li class="right_gs2_li2" id=gsny52 onmouseover="choise21(3,2)">德国DAX</li>
+            <li class="right_gs2_li2" id=gsny53 onmouseover="choise21(3,3)">法国CAC</li>
+            <li class="right_gs2_li3"></li>
+        </ul>
+    </div>
+    <div class="b_border2" id="choise_other1">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://image.sinajs.cn/newchart/v5/forex/min5_m/FT100.gif" width="240" height="125" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#FFFFFF">伦敦指数:</td>
+        <td width="28%" align="center" bgcolor="#FFFFFF" class="green">7216.58</td>
+        <td width="22%" align="center" bgcolor="#FFFFFF" class="green">-171.36</td>
+        <td width="27%" align="center" bgcolor="#FFFFFF" class="green">-2.32</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">德国DAX:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">13380.67</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-293.62</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">-2.15</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">法国CAC:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">6086.02</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-172.34</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-2.75</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="choise_other2">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://ichart.finance.yahoo.com/t?s=%5EGDAXI&9305" width="192" height="96" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">伦敦指数:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">7216.58</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-171.36</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">-2.32</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#FFFFFF">德国DAX:</td>
+        <td width="28%" align="center" bgcolor="#FFFFFF" class="green">13380.67</td>
+        <td width="22%" align="center" bgcolor="#FFFFFF" class="green">-293.62</td>
+        <td width="27%" align="center" bgcolor="#FFFFFF" class="green">-2.15</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#e6f0f7">法国CAC:</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">6086.02</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-172.34</td>
+        <td align="center" bgcolor="#e6f0f7" class="green">-2.75</td>
+    </tr>
+</table>
+    </div>
+    <div class="b_border2" style="DISPLAY: none;" id="choise_other3">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="148" align="center" bgcolor="#FFFFFF"><img src="http://ichart.finance.yahoo.com/t?s=%5EFCHI&141" width="192" height="96" /></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">伦敦指数:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">7216.58</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-171.36</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">-2.32</td>
+    </tr>
+    <tr>
+        <td width="23%" height="20" align="center" bgcolor="#e6f0f7">德国DAX:</td>
+        <td width="28%" align="center" bgcolor="#e6f0f7" class="green">13380.67</td>
+        <td width="22%" align="center" bgcolor="#e6f0f7" class="green">-293.62</td>
+        <td width="27%" align="center" bgcolor="#e6f0f7" class="green">-2.15</td>
+    </tr>
+    <tr>
+        <td height="20" align="center" bgcolor="#FFFFFF">法国CAC:</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">6086.02</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">-172.34</td>
+        <td align="center" bgcolor="#FFFFFF" class="green">-2.75</td>
+    </tr>
+</table>
+    </div>
+</div>
+<!--gs5-->
+<!--box end-->

@@ -12,7 +12,7 @@ import java.io.PrintWriter;
  */
 public class HttpHelper {
 
-    public void outHtml(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public static void outHtml(HttpServletRequest request, HttpServletResponse response) throws Exception {
         // 设置编码方式
         request.setCharacterEncoding("UTF-8");
         // 获取请求参数
@@ -46,5 +46,10 @@ public class HttpHelper {
 //        if (method.getStatusCode() == 200){
 //            httpResp = method.getResponseBodyAsString();
 //        }
+    }
+
+    public static void main(String[] args) {
+
+
     }
 }
