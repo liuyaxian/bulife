@@ -33,4 +33,25 @@ public class LoginServlet extends HttpServlet {
         System.out.println("req = " + req + ", resp = doPost" + resp);
         super.doPost(req, resp);
     }
-}
+
+
+    public static void main(String[] args) {
+
+        String packageName = "com.zlfund.mobile";
+            String sql = "select t1.* from interaccounts t1 ";
+                sql += " left join custnotify t2 on t2.custno = t1.custno and t2.notifytype ='information' and coalesce(t2.appst,'Y') ='Y' ";
+            sql += " where t1.service_name in ('Android','iOS') and t1.packagename = '" + packageName + "'";
+            sql += " and t1.external_id not like 'untoken%' and t1.external_id not like '%-%'";
+
+
+
+            
+
+        String sql1 = "select t1.* from interaccounts t1 where t1.service_name in ('Android','iOS') and t1.packagename = '" + packageName + "'";
+        sql1 += " and t1.external_id not like 'untoken%' and t1.external_id not like '%-%'";
+        sql1 += " and not exists (select 1 from  custnotify t2 WHERE t2.custno = t1.custno and t2.notifytype ='information' and coalesce(t2.appst,'Y') ='F') ";
+
+        System.out.println("sql:"+ sql1);
+        }
+
+    }
