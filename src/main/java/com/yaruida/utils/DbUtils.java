@@ -1,15 +1,34 @@
 package com.yaruida.utils;
 
+import lombok.val;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class DbUtils {
 
-    private static final String CLASSNAME = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://172.18.10.74:3306/mytest?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&allowMultiQueries=true";
-    private static final String USER = "emsel";
-    private static final String PASSWORD = "emselemsel";
+    private static String classname = "com.mysql.cj.jdbc.Driver";
+    private static String url = "jdbc:mysql://172.18.10.74:3306/mytest?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&allowMultiQueries=true";
+    private static String user = "emsel";
+    private static String password = "emselemsel";
+
+
+    static {
+
+        try {
+            val resourceAsStream = DbUtils.class.getClassLoader().getResourceAsStream("jdbc.properities");
+            Properties properties = new Properties();
+            properties.load(resourceAsStream);
+            classname = properties.getProperty("jdbc.driverClass");
+            url = properties.getProperty("jdbc.url");
+            user = properties.getProperty("jdbc.user");
+            password = properties.getProperty("jdbc.password");
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
 
     /**
      * 执行 DDL  DML 语句
@@ -19,8 +38,8 @@ public class DbUtils {
     public static int update(String sql,  Object ...args){
 
         try {
-            Class.forName(CLASSNAME);
-            try(Connection connection = DriverManager.getConnection(URL , USER, PASSWORD);
+            Class.forName(classname);
+            try(Connection connection = DriverManager.getConnection(url , user, password);
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);){
                 for (int i = 0; i < args.length; i++) {
                     preparedStatement.setObject(i+1,  args[i]);
@@ -41,8 +60,8 @@ public class DbUtils {
             return  null;
         }
         try {
-            Class.forName(CLASSNAME);
-            try(Connection connection = DriverManager.getConnection(URL , USER, PASSWORD);
+            Class.forName(classname);
+            try(Connection connection = DriverManager.getConnection(url , user, password);
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);){
                 for (int i = 0; i < args.length; i++) {
                     preparedStatement.setObject(i+1, args[i]);
