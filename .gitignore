@@ -31,3 +31,4 @@ out
 gen
 /target*
 .idea/
+test/
