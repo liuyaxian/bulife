@@ -1,11 +1,14 @@
 package com.javasebase;
 
+import com.yaruida.utils.MysqlJdbcUtils;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -18,19 +21,20 @@ public class LoginServlet extends HttpServlet {
         req.getParameter("ee");
         System.out.println("req = " + req + ", resp = doGet" + resp);
 //        super.doGet(req, resp);
-        resp.setContentType("textapplication");
-
-
-
+        resp.setContentType("text/txt");
     }
-
-
-
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("req = " + req + ", resp = doPost" + resp);
+
+        try {
+            req.setAttribute("customers", MysqlJdbcUtils.test2());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        req.getRequestDispatcher("/path/index.jsp");
         super.doPost(req, resp);
     }
 
