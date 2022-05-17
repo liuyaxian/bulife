@@ -35,7 +35,7 @@ public class RedisTest {
         }
 
 
-        String  jsonUser = new ObjectMapper().writeValueAsString(new User());
+        String  writeValueAsString = new ObjectMapper().writeValueAsString(new User());
 
     }
 

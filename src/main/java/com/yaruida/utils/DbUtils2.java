@@ -2,26 +2,28 @@ package com.yaruida.utils;
 
 import lombok.val;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+public class DbUtils2 {
 
-public class DbUtils {
+    private static String classname = "com.mysql.cj.jdbc.Driver";
+    private static String url = "jdbc:mysql://172.18.10.74:3306/mytest?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&allowMultiQueries=true";
+    private static String user = "emsel";
+    private static String password = "emselemsel";
 
-    private static DataSource dataSource;
 
     static {
         // 关闭流
-        try(val resourceAsStream = DbUtils.class.getClassLoader().getResourceAsStream("druid.properities");) {
+        try(val resourceAsStream = DbUtils.class.getClassLoader().getResourceAsStream("jdbc.properities");) {
             Properties properties = new Properties();
             properties.load(resourceAsStream);
-//           dataSource =  DruidDataSourceFactory.createDataSource(properties);
+            classname = properties.getProperty("jdbc.driverClass");
+            url = properties.getProperty("jdbc.url");
+            user = properties.getProperty("jdbc.user");
+            password = properties.getProperty("jdbc.password");
         } catch (Exception e) {
             e.getMessage();
         }
@@ -35,13 +37,14 @@ public class DbUtils {
     public static int update(String sql,  Object ...args){
 
         try {
-            Connection connection = dataSource.getConnection();
-            try(PreparedStatement preparedStatement = connection.prepareStatement(sql);){
+            Class.forName(classname);
+            try(Connection connection = DriverManager.getConnection(url , user, password);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);){
                 for (int i = 0; i < args.length; i++) {
                     preparedStatement.setObject(i+1,  args[i]);
                 }
 
-              return preparedStatement.executeUpdate();
+                return preparedStatement.executeUpdate();
             }
         } catch (Exception e){
             System.out.println("e.getMessage() = " + e.getMessage());
@@ -50,14 +53,15 @@ public class DbUtils {
     }
 
 
-    public static <T>List<T> queryList(String sql, RowMapper<T> mapper,  Object ...args ){
+    public static <T> List<T> queryList(String sql, DbUtils.RowMapper<T> mapper, Object ...args ){
 
         if (mapper == null){
             return  null;
         }
         try {
-            Connection connection = dataSource.getConnection();
-            try(PreparedStatement preparedStatement = connection.prepareStatement(sql);){
+            Class.forName(classname);
+            try(Connection connection = DriverManager.getConnection(url , user, password);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);){
                 for (int i = 0; i < args.length; i++) {
                     preparedStatement.setObject(i+1, args[i]);
                 }
@@ -69,14 +73,7 @@ public class DbUtils {
                 while (resultSet.next()){
                     result.add(mapper.map(resultSet, row++));
                 }
-
-                try{
-                    if (!resultSet.wasNull()){
-                        resultSet.close();
-                    }
-                }catch (Exception e){
-                    e.getMessage();
-                }
+                resultSet.close();
                 return result;
             }
         }catch (Exception e){
@@ -86,7 +83,7 @@ public class DbUtils {
         return  null;
     }
 
-   public   interface  RowMapper<T> {
+    public   interface  RowMapper<T> {
         T map(ResultSet rs, int row) throws SQLException;
     }
 }
