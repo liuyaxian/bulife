@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>test</module>
+        <module>untitled</module>
     </modules>
     <parent>
          <groupId>org.springframework.boot</groupId>
@@ -18,8 +19,10 @@
      </parent>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
+        <maven.compiler.compilerVersion>16</maven.compiler.compilerVersion>
         <java.version>16</java.version>
         <tinypinyin.version>2.0.3</tinypinyin.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
@@ -332,7 +335,19 @@
             <artifactId>spring-jdbc</artifactId>
             <version>5.3.20</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.3.20</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <resources>

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+
 public class DbUtils2 {
 
     private static String classname = "com.mysql.cj.jdbc.Driver";
@@ -86,4 +87,5 @@ public class DbUtils2 {
     public   interface  RowMapper<T> {
         T map(ResultSet rs, int row) throws SQLException;
     }
+
 }

@@ -1,10 +1,15 @@
 package com.ruiya;
 
 import com.ruiya.htmlToImage.FreemarkerUtils;
+import com.yaruida.dao.CustomerDao;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,9 +29,19 @@ public class FreemarkerUtilsTest {
             map.put("msg","html--生成图片测试     ");
             map.put("img","https://upload-images.jianshu.io/upload_images/912344-3054132dd6939004.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240");
             FreemarkerUtils.turnImage("index.ftl",map,response);
+
         } catch (Exception e) {
             System.out.println("dfsdf");
         }
     }
 
+    @Test
+    @Before
+    @After
+    public void testCuster() throws SQLException, ClassNotFoundException {
+
+        CustomerDao customerDao = new CustomerDao();
+        customerDao.query();
+
+    }
 }

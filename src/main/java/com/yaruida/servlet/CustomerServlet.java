@@ -24,6 +24,9 @@ public class CustomerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.setCharacterEncoding("UTF-8");
+//
+//        BeanUtils.populate(Customer, req.getParameterMap());
         try {
             String uri = req.getRequestURI();
             val split = uri.split("/");

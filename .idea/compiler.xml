@@ -8,7 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="log4j2Test" />
-        <module name="bulife" />
+        <module name="test" />
       </profile>
     </annotationProcessing>
   </component>
