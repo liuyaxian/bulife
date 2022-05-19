@@ -32,3 +32,4 @@ gen
 /target*
 .idea/
 test/
+${project.build.directory}*

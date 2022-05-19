@@ -6,12 +6,8 @@
 
     <groupId>org.example</groupId>
     <artifactId>bulife</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>test</module>
-        <module>untitled</module>
-    </modules>
     <parent>
          <groupId>org.springframework.boot</groupId>
          <artifactId>spring-boot-starter-parent</artifactId>
@@ -19,7 +15,9 @@
      </parent>
 
     <properties>
+        <!-- 设置项目的编码方式 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 设置项目依赖的jdk版本 -->
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
         <maven.compiler.compilerVersion>16</maven.compiler.compilerVersion>
@@ -111,7 +109,6 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -125,12 +122,6 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>4.2.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.80</version>
         </dependency>
 
         <!-- 引入jackson依赖 -->
@@ -329,27 +320,25 @@
             <artifactId>druid</artifactId>
             <version>1.2.9</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>5.3.20</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.4</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>5.3.20</version>
-        </dependency>
     </dependencies>
 
 
     <build>
+        <!-- 设置项目最终的jar报名称 -->
+        <finalName>bulife</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+            </plugin>
+        </plugins>
         <resources>
             <!-- 防止找不到mybatis的mapper.xml文件，在项目启动时候就导入进去-->
                 <resource>

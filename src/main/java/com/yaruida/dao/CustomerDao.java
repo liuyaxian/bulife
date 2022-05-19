@@ -1,12 +1,17 @@
 package com.yaruida.dao;
 
+import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.yaruida.utils.Customer;
 import com.yaruida.utils.DbSpringJdbcUtils;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
+
 
 public class CustomerDao {
 
@@ -37,5 +42,33 @@ public class CustomerDao {
         dataSource.setUsername("guest_user");
         dataSource.setPassword("guest_password");
         return dataSource;
+    }
+
+
+
+
+    private static JdbcTemplate jdbcTemplate;
+
+    static {
+        try (InputStream resourceAsStream = CustomerDao.class.getClassLoader().getResourceAsStream("dbs.properties")){
+            Properties properties = new Properties();
+            properties.load(resourceAsStream);
+            DataSource dataSource = DruidDataSourceFactory.createDataSource(properties);
+            jdbcTemplate = new JdbcTemplate(dataSource);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Customer> list() throws Exception {
+        String sql1 = " select id, name, pwd, age  from  `user` ";
+        return  jdbcTemplate.query(sql1, (rs , row) -> {
+            Customer customer = new Customer();
+            customer.setAge(rs.getInt("age"));
+            customer.setId(rs.getInt("id"));
+            customer.setName(rs.getString("name"));
+            customer.setPwd(rs.getString("pwd"));
+            return customer;
+        } );
     }
 }
