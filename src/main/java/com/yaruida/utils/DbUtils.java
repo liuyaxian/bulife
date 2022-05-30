@@ -18,7 +18,7 @@ public class DbUtils {
 
     static {
         // 关闭流
-        try(val resourceAsStream = DbUtils.class.getClassLoader().getResourceAsStream("druid.properities");) {
+        try(val resourceAsStream = DbUtils.class.getClassLoader().getResourceAsStream("/druid.properities");) {
             Properties properties = new Properties();
             properties.load(resourceAsStream);
 //           dataSource =  DruidDataSourceFactory.createDataSource(properties);

@@ -7,6 +7,7 @@ import javax.net.ssl.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
 import java.io.*;
+import java.net.InetAddress;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -24,7 +25,7 @@ public class GetCertificateUtils {
 
         HttpServletResponse  httpResponse = null;
         try {
-            String certificate =  getX509Certificate("www.luckywhb.com", "mycert.cer");
+            String certificate =  getX509Certificate("officew.jjmmw.com", "mycert.cer");
             System.out.println("certificate:" + certificate);
 
             InputStream in = new FileInputStream("test.cer");
@@ -62,7 +63,7 @@ public class GetCertificateUtils {
         ks.load(in, passphrase);
         in.close();
         //TLS版本
-        SSLContext context = SSLContext.getInstance("TLS");
+        SSLContext context = SSLContext.getInstance("TLSv1.2");
         TrustManagerFactory tmf =
                 TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
         tmf.init(ks);
@@ -72,7 +73,7 @@ public class GetCertificateUtils {
 
         // 创建方式 SSLSocketFactory
         SSLSocketFactory factory = context.getSocketFactory();
-        SSLSocket socket = (SSLSocket)factory.createSocket(url, 443);
+        SSLSocket socket = (SSLSocket)factory.createSocket(InetAddress.getByName(url).getHostName(), 443);
         //使用指定的超时启用/禁  单位毫秒
         socket.setSoTimeout(10000);
         try {

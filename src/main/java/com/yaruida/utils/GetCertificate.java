@@ -48,7 +48,7 @@ public class GetCertificate {
         ks.load(in, passphrase);
         in.close();
         //TLS版本
-        SSLContext context = SSLContext.getInstance("TLS");
+        SSLContext context = SSLContext.getInstance("TLSv1.2");
         TrustManagerFactory tmf =
                 TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
         tmf.init(ks);

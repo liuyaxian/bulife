@@ -18,7 +18,7 @@ public class DbUtils2 {
 
     static {
         // 关闭流
-        try(val resourceAsStream = DbUtils.class.getClassLoader().getResourceAsStream("jdbc.properities");) {
+        try(val resourceAsStream = DbUtils.class.getClassLoader().getResourceAsStream("/jdbc.properities");) {
             Properties properties = new Properties();
             properties.load(resourceAsStream);
             classname = properties.getProperty("jdbc.driverClass");

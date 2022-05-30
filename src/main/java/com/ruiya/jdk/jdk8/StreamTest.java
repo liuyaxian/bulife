@@ -3,6 +3,9 @@ package com.ruiya.jdk.jdk8;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -17,11 +20,53 @@ import java.util.stream.Stream;
 //TODO
 public class StreamTest {
 
-    public static void main(String[] args) {
-        createStream();
+    public static void main(String[] args) throws IOException {
+            char c;
+            // 使用 System.in 创建 BufferedReader
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//            System.out.println("输入字符, 按下 'q' 键退出。");
+//            String str ;
+//            // 读取字符
+//            do {
+//                c = (char) br.read();
+//                System.out.println(c);
+//            } while (c != 'q');
+//            do{
+//                str = br.readLine();
+//                System.out.println(str);
+//
+//            } while (!str.equals("end"));
+
+
+        int b;
+        b = 'A';
+        System.out.write(b);
+        System.out.write('\n');}
+
+
+
+    public  static void  testStream1(){
+
+//        List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+//        // 获取对应的平方数
+//        List<Integer> squaresList = numbers.stream().map( i -> i*i).distinct().collect(Collectors.toList());
+//        IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x).summaryStatistics();
+//
+//        numbers.stream().map(i -> i*i);
+
+
+//        Random random = new Random(3);
+//        random.ints().limit(12).forEach(System.out::println);
+
+//        Map<String, Integer> map = new HashMap<>();
+//        for (String s : arr) {
+//            map.put(s, map.getOrDefault(s, 0) + 1);
+//
+//        }
+////        map.forEach((key, value) -> System.out.println(key + " : " + value));
+//        map.forEach((k,v) -> System.out.println("key"+ k + "value"+v));
+
     }
-
-
 
 
     /**

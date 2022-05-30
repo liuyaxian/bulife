@@ -573,7 +573,7 @@ public class FirstDemo {
 //            }
 //            x509TrustManager = (X509TrustManager) trustManagers[0];
 //            // 这里传TLS或SSL其实都可以的
-//            SSLContext sslContext = SSLContext.getInstance("TLS");
+//            SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
 //            sslContext.init(null, new TrustManager[]{x509TrustManager}, new SecureRandom());
 //            return new SSLConnectionSocketFactory(sslContext);
 //        }
@@ -593,7 +593,7 @@ public class FirstDemo {
 //                return new X509Certificate[0];
 //            }
 //        };
-//        SSLContext sslContext = SSLContext.getInstance("TLS");
+//        SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
 //        sslContext.init(null, new TrustManager[]{x509TrustManager}, new SecureRandom());
 //        return new SSLConnectionSocketFactory(sslContext);
 //    }
