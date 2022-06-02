@@ -9,9 +9,7 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class DateHelper
 {
@@ -792,4 +790,61 @@ public class DateHelper
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern, Locale.ENGLISH);
         return dateFormat.format(date);
     }
+    public static void main(String[] args) throws ParseException {
+
+        findDates("2018-10-01","2018-10-25");
+        getBetweenDate("2018-10-01","2018-10-25").stream().forEach(s -> System.out.println("1:"+s));
+    }
+
+    public static List<String> findDates(String dBegin, String dEnd) throws ParseException {
+        //日期工具类准备
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        //设置开始时间
+        Calendar calBegin = Calendar.getInstance();
+        calBegin.setTime(format.parse(dBegin));
+
+        //设置结束时间
+        Calendar calEnd = Calendar.getInstance();
+        calEnd.setTime(format.parse(dEnd));
+
+        //装返回的日期集合容器
+        List<String> Datelist = new ArrayList<String>();
+        Datelist.add(format.format(calBegin.getTime()));
+        // 每次循环给calBegin日期加一天，直到calBegin.getTime()时间等于dEnd
+        while (format.parse(dEnd).after(calBegin.getTime()))  {
+            // 根据日历的规则，为给定的日历字段添加或减去指定的时间量
+            calBegin.add(Calendar.DAY_OF_MONTH, 1);
+            Datelist.add(format.format(calBegin.getTime()));
+        }
+
+        //打印结果 [2018-10-01, 2018-10-02, 2018-10-03, 2018-10-04, 2018-10-05, 2018-10-06, 2018-10-07, 2018-10-08, 2018-10-09, 2018-10-10, 2018-10-11, 2018-10-12, 2018-10-13, 2018-10-14, 2018-10-15, 2018-10-16, 2018-10-17, 2018-10-18, 2018-10-19, 2018-10-20, 2018-10-21, 2018-10-22, 2018-10-23, 2018-10-24, 2018-10-25]
+        System.out.println(Datelist);
+        return Datelist;
+    }
+
+    public static List<String> getBetweenDate(String begin,String end){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        List<String> betweenList = new ArrayList<String>();
+
+        try{
+            Calendar startDay = Calendar.getInstance();
+            startDay.setTime(format.parse(begin));
+            startDay.add(Calendar.DATE, -1);
+            while(true){
+                startDay.add(Calendar.DATE, 1);
+                Date newDate = startDay.getTime();
+                String newend=format.format(newDate);
+                betweenList.add(newend);
+                if(end.equals(newend)){
+                    break;
+                }
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return betweenList;
+    }
 }
+

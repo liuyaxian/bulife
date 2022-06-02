@@ -103,7 +103,7 @@ public class StreamTest {
 //        List<User> users = getUserData();
 //        Stream<User> stream = users.stream();
 //        stream.filter(user -> user.getGender()==0 && user.getAge()>50).forEach(e->System.out.println(e));
-        //     BeanUtils.copyProperties(user, dto);
+//             BeanUtils.copyProperties(user, dto);
 //        List<UserDto> userDtos = stream.map(user -> dao2Dto(user)).collect(Collectors.toList());
 //        stream.mapToInt();
 //        stream.mapToInt();
@@ -125,6 +125,11 @@ public class StreamTest {
 //        User[] userArray = stream.filter(user -> user.getGender().equals(0) && user.getAge() > 50).toArray(User[]::new);
 //        Integer sum = integerStream1.reduce(0,(x,y)->x+y);
 
+//        BeanUtils.copyProperties(user, dto);
+
+//        DateConverter dateConverter = new DateConverter(null);
+//        dateConverter.setPatterns(new String[]{"YYYYMMDD"});
+//        ConverterUtil.register(dateConverter, Date.class);
     }
 
     private static void flatMap() {
