@@ -1,8 +1,9 @@
 package com.yaruida.utils;
 
-import lombok.val;
+import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 import javax.sql.DataSource;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,10 +19,12 @@ public class DbUtils {
 
     static {
         // 关闭流
-        try(val resourceAsStream = DbUtils.class.getClassLoader().getResourceAsStream("/druid.properities");) {
+        try( InputStream resourceAsStream = DbUtils.class.getClassLoader().getResourceAsStream("/jdbc.properties");) {
+
+
             Properties properties = new Properties();
             properties.load(resourceAsStream);
-//           dataSource =  DruidDataSourceFactory.createDataSource(properties);
+           dataSource =  DruidDataSourceFactory.createDataSource(properties);
         } catch (Exception e) {
             e.getMessage();
         }

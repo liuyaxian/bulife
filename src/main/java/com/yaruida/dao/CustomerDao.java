@@ -50,7 +50,7 @@ public class CustomerDao {
     private static JdbcTemplate jdbcTemplate;
 
     static {
-        try (InputStream resourceAsStream = CustomerDao.class.getClassLoader().getResourceAsStream("dbs.properties")){
+        try (InputStream resourceAsStream = CustomerDao.class.getClassLoader().getResourceAsStream("jdbc.properties")){
             Properties properties = new Properties();
             properties.load(resourceAsStream);
             DataSource dataSource = DruidDataSourceFactory.createDataSource(properties);

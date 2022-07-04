@@ -21,7 +21,7 @@ public class MysqlJdbcUtils {
     public static void connectionMysql(String name, String pwd) throws ClassNotFoundException, SQLException, IOException {
 
         //1、 加载文件
-        InputStream is = MysqlJdbcUtils.class.getClassLoader().getResourceAsStream("jdbc.properties");
+        InputStream is = MysqlJdbcUtils.class.getClassLoader().getResourceAsStream("/jdbc.properties");
         Properties properties = new Properties();
         properties.load(is);
 
@@ -56,9 +56,26 @@ public class MysqlJdbcUtils {
         // sql    inject
 //        test3("123", " '' OR '1' = '1' ");
 //        login2("123", "345");
-        test211();
+//        test211();
 //        connectionMysql("123", "345");
+//        test22();
+
+
+        ClassLoader classLoader = MysqlJdbcUtils.class.getClassLoader();
+        InputStream resourceAsStream = classLoader.getResourceAsStream("/jdbc.properties");
+        InputStream resourceAsStrea = classLoader.getResourceAsStream("jdbc.properties");
+
+        ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+
+//        String path = MysqlJdbcUtils.class.getClass().getResource("").getPath();
+//        System.out.printf("path" +  path);
+
+        String path1 = MysqlJdbcUtils.class.getClass().getResource("/").getPath();
+        System.out.printf("path1" +  path1);
+        System.out.printf("是否相同:" + (classLoader == systemClassLoader));
+
     }
+
 
 
 
