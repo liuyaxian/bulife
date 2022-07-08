@@ -791,9 +791,9 @@ public class DateHelper
         return dateFormat.format(date);
     }
     public static void main(String[] args) throws ParseException {
-
-        findDates("2018-10-01","2018-10-25");
-        getBetweenDate("2018-10-01","2018-10-25").stream().forEach(s -> System.out.println("1:"+s));
+        toDayString(new Date());
+//        findDates("2018-10-01","2018-10-25");
+//        getBetweenDate("2018-10-01","2018-10-25").stream().forEach(s -> System.out.println("1:"+s));
     }
 
     public static List<String> findDates(String dBegin, String dEnd) throws ParseException {
@@ -846,5 +846,23 @@ public class DateHelper
 
         return betweenList;
     }
+
+    // 两个日期相差 x.x年
+    public static void toDayString(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH) + 1;
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int hour = c.get(Calendar.HOUR);
+        int minute = c.get(Calendar.MINUTE);
+        int second = c.get(Calendar.SECOND);
+        int dayweek = c.get(Calendar.DAY_OF_WEEK);
+        String dayweek2 = dayweek == 0 ? "日" : dayweek + "";
+        System.out.println(year + "年" + month + "月" + day + "日" + hour + "时" + minute + "分"
+                + second + "秒" + "周" + dayweek2);
+
+    }
+
 }
 

@@ -1,7 +1,5 @@
 package com.datastructure.likou;
 
-import lombok.val;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +23,7 @@ public class MissingNumber {
             if (i == 0){
                 tempLitter =   nums[0];
             }
-            val num = nums[i];
+            Integer num = nums[i];
             if ( nums[i] < tempLitter){
                 tempLitter =  nums[i];
             }
