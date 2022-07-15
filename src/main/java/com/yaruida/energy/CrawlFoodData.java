@@ -41,7 +41,7 @@ public class CrawlFoodData {
      */
     public static List<String>  getFoodFirstLevel() throws IOException {
         String url1 = "https://www.boohee.com/food/";
-        Document document = Jsoup.connect(url1).get();
+        Document document = getDocument(url1);
 
         Elements elements = document.select("#main > div.widget-food-category > div > ul > li");
 
@@ -52,6 +52,11 @@ public class CrawlFoodData {
         return urls;
     }
 
+    private static Document getDocument(String url1) throws IOException {
+        Document document = Jsoup.connect(url1).timeout(1000).get();
+        return document;
+    }
+
 
     /**
      * 获取食品二级分类
@@ -60,7 +65,7 @@ public class CrawlFoodData {
      * @throws IOException
      */
     public static List<String> getFoodSecondLevel(String url1) throws IOException {
-        Document document = Jsoup.connect(url1).get();
+        Document document = getDocument(url1);
 
         Elements elements = document.select("#main > div > div.widget-food-list.pull-right > ul > li");
 
@@ -82,7 +87,7 @@ public class CrawlFoodData {
 
         Document document = null;
         try {
-            document = Jsoup.connect(url).get();
+            document = getDocument(url);
             String foodName =  document.select("#main > div > div.widget-food-detail.pull-left > div.content > div > ul > li:nth-child(1)").text().replaceAll("别名：","");
             Elements elements = document.select("#main > div > div.widget-food-detail.pull-left > div.nutr-tag.margin10 > div > dl");
             EnergyInfo energyInfo = new EnergyInfo() ;
