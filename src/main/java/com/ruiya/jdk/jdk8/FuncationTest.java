@@ -1,5 +1,7 @@
 package com.ruiya.jdk.jdk8;
 
+import java.util.function.BiConsumer;
+
 public class FuncationTest implements  Functional{
 
     @Override
@@ -38,6 +40,33 @@ public class FuncationTest implements  Functional{
         // 返回true false 经常用于判断
     }
 
+
+    // BiConsumer函数式接口
+
+    public void testBiConsumer(){
+        // 创建字符串对象
+        StringBuilder sb = new StringBuilder();
+        // 声明函数对象 consumer
+        BiConsumer<String,String> consumer = (str1, str2) -> {
+            // 拼接字符串
+            sb.append(str1);
+            sb.append(str2);
+        };
+        // 调用Consumer.accept()方法接收参数
+        consumer.accept("我是参数01","，我是参数02。我们被BiConsumer.accept(T,V)接收并处理了");
+        System.out.println(sb);
+    }
+
+
+    public static void testBiConsumer1(){
+        BiConsumer<String, String> consumer = (s, s2) -> {
+            System.out.printf("%s,%s", s,2);
+            System.out.printf("%s", s2);
+        };
+        consumer.accept("first", "sendent");
+    }
+
+
     public static void  showTime(CurrentTimePrinter printer){
         printer.printCurrentTime();
     }
@@ -52,25 +81,29 @@ public class FuncationTest implements  Functional{
 
     // 函数式编程：先考虑传入的参数 再考虑方法的实现
     public static void main(String[] args) {
+
         // ()->{}
 //        showTime(() -> System.out.println(System.currentTimeMillis()));
 //        getResult(10, 3, (a, b) -> a*b);
 //        convert(9313, Integer :: toHexString);
-        // 消费型接口
-        Consumer<String> c = (x) -> System.out.println("hello" + x +"!");
-        c.accept("sdfsf");
+//        // 消费型接口
+//        Consumer<String> c = (x) -> System.out.println("hello" + x +"!");
+//        c.accept("sdfsf");
+//
+//        // 供给型接口
+//        Supplier<String> s = () -> "你好呀！";
+//        System.out.println(s.get());
+//
+//        // 函数型接口
+//        Function<String, Integer> f = (x) -> x.hashCode();
+//        System.out.println(f.apply("hwelle"));
+//
+//        // 断言型接口
+//        Predicate<String> p = (x) -> x.length() >30;
+//        System.out.println(p.test("sksakg abcdefghijkliopxrstuvwxyz"));
 
-        // 供给型接口
-        Supplier<String> s = () -> "你好呀！";
-        System.out.println(s.get());
 
-        // 函数型接口
-        Function<String, Integer> f = (x) -> x.hashCode();
-        System.out.println(f.apply("hwelle"));
-
-        // 断言型接口
-        Predicate<String> p = (x) -> x.length() >30;
-        System.out.println(p.test("sksakg abcdefghijkliopxrstuvwxyz"));
+        testBiConsumer1();
     }
 }
 

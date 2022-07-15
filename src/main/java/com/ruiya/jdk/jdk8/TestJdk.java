@@ -10,7 +10,20 @@ public class TestJdk {
 
     public static void main(String[] args) {
       //  mapForEach();
+
+
+       new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("dsf");
+            }
+        }).start();
+
+      new Thread(() -> System.out.println("eee")).start();
     }
+
+
+
 
     /***
      * map foreach的使用

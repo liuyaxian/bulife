@@ -1,6 +1,6 @@
 package com.ruiya.Converter;
 
-import com.ruiya.jdk.Person;
+import com.ruiya.jdk.jdk16.Person;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
