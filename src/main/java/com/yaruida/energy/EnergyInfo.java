@@ -16,11 +16,23 @@ public class EnergyInfo implements Serializable {
     private float foodenergy;
     /**碳水化合物(克) */
     private float carbohydrate;
-    /**脂肪(克 */
+    /**脂肪(克)*/
     private float fat;
     /**蛋白质(克) */
     private float protein;
     /** 纤维素(克) */
     private float cellulose;
+
+    public Object[] csvLine() {
+
+        return new Object[]{
+                "",
+                getFoodName(),
+                getFoodenergy(),
+                getCarbohydrate(),
+                getFat(),
+                getProtein(),
+                getCellulose()};
+    }
 
 }
