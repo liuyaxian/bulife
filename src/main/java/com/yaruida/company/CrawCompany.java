@@ -134,7 +134,7 @@ public class CrawCompany {
 
 
     private static Document getDocumentPost(String url1) throws Exception {
-        String data = "{'word':'深圳市龙岗区坪地街道坪西社区龙岗大道(坪地段)1000号君胜熙珑山花园','sortType':'0','pageSize':'50', 'referer':'search','key':'深圳市龙岗区坪地街道坪西社区龙岗大道(坪地段)1000号君胜熙珑山花园5栋C座','sessionNo':'1658220566.50769391','pageNum':'1'}";
+        String data = "{'word':'work','sortType':'0','pageSize':'50', 'referer':'search','key':'key','sessionNo':'1658220566.50769391','pageNum':'1'}";
         Map mapTypes = JSON.parseObject(data);
         Connection connect = Jsoup.connect(url1);
         //请求头设置，特别是cookie设置
