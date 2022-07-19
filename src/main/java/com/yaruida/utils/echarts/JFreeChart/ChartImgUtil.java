@@ -14,7 +14,6 @@ import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.ui.RectangleInsets;
 
 import java.awt.*;
 import java.io.File;
@@ -75,7 +74,7 @@ public class ChartImgUtil {
         // 没有数据时显示的文字说明
         categoryPlot.setNoDataMessage("没有数据显示");
         // 设置曲线图与xy轴的距离
-        categoryPlot.setAxisOffset(new RectangleInsets(0d, 0d, 0d, 0d));
+//        categoryPlot.setAxisOffset(new RectangleInsets(0d, 0d, 0d, 0d));
         // 设置面板字体
         Font labelFont = new Font("黑体", Font.BOLD, 14);
         // 取得Y轴

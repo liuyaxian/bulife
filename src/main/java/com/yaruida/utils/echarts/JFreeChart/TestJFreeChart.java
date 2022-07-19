@@ -1,14 +1,12 @@
 package com.yaruida.utils.echarts.JFreeChart;
 
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.CategoryDataset;
-import org.jfree.data.general.DatasetUtilities;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,9 +38,9 @@ public class TestJFreeChart {
             }
             out = new FileOutputStream(outputPath);
             // 保存为PNG
-            // ChartUtilities.writeChartAsPNG(out, chart, 600, 400);
+//             ChartUtilities.writeChartAsPNG(out, chart, 600, 400);
             // 保存为JPEG
-            ChartUtilities.writeChartAsJPEG(out, chart, 600, 400);
+//            ChartUtilities.writeChartAsJPEG(out, chart, 600, 400);
             out.flush();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -77,11 +75,11 @@ public class TestJFreeChart {
         plot.setForegroundAlpha(0.5f);
         // 其他设置 参考 CategoryPlot类
         LineAndShapeRenderer renderer = (LineAndShapeRenderer)plot.getRenderer();
-        renderer.setBaseShapesVisible(true); // series 点（即数据点）可见
-        renderer.setBaseLinesVisible(true); // series 点（即数据点）间有连线可见
-        renderer.setUseSeriesOffset(true); // 设置偏移量
-        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
-        renderer.setBaseItemLabelsVisible(true);
+//        renderer.setBaseShapesVisible(true); // series 点（即数据点）可见
+//        renderer.setBaseLinesVisible(true); // series 点（即数据点）间有连线可见
+//        renderer.setUseSeriesOffset(true); // 设置偏移量
+//        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+//        renderer.setBaseItemLabelsVisible(true);
         return jfreechart;
     }
 
@@ -96,10 +94,10 @@ public class TestJFreeChart {
                 "23:00"};
         double[][] data = {{4, 3, 1, 1, 1, 1, 2, 2, 2, 1, 8, 2, 1, 1},};
         // 或者使用类似以下代码
-        // DefaultCategoryDataset categoryDataset = new
-        // DefaultCategoryDataset();
-        // categoryDataset.addValue(10, "rowKey", "colKey");
-        return DatasetUtilities.createCategoryDataset(rowKeys, colKeys, data);
+         DefaultCategoryDataset categoryDataset = new   DefaultCategoryDataset();
+         categoryDataset.addValue(10, "rowKey", "colKey");
+//        DatasetUtilities.createCategoryDataset(rowKeys, colKeys, data);
+        return categoryDataset;
     }
 }
 
