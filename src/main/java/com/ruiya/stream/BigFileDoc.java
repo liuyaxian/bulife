@@ -22,6 +22,9 @@ public class BigFileDoc {
                     .skip(0)
                     .forEach(p -> points.add(new Point(p[0], p[2], p[4])));
         }
+
+
+
     }
 
     public static void main(String[] args) throws IOException {

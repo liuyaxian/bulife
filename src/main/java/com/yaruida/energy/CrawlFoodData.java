@@ -13,6 +13,8 @@ import java.beans.IntrospectionException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -58,7 +60,9 @@ public class CrawlFoodData {
     }
 
     private static Document getDocument(String url1) throws IOException {
-        Document document = Jsoup.connect(url1).timeout(1000).get();
+        // 设置代理
+        Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 7890));
+        Document document = Jsoup.connect(url1).proxy(proxy).timeout(1000).get();
         return document;
     }
 
@@ -152,8 +156,10 @@ public class CrawlFoodData {
 
         // 从 url 加载
         Document document = Jsoup.connect(url).get();
+        Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 7890));
 
         Jsoup.connect(url).data("query", "java")
+                .proxy(proxy)
                 .userAgent("Mozilla")
                 .cookie("auth", "token")
                 .timeout(3000)
